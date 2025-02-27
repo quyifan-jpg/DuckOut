@@ -1,13 +1,13 @@
 # Compiler and flags
 CC = gcc
 CFLAGS = -I./lib
-LDFLAGS = -L./lib -lduckdb
+LDFLAGS = -L./lib -lduckdb -Wl,-rpath,./lib -lrdmacm -libverbs
 
 # Output directory
 BIN_DIR = bin
 
 # Source files
-SOURCES = server.c client.c generate_tpch.c
+SOURCES = server.c client.c generate_tpch.c rdma_client.c rdma_server.c
 
 # Targets
 TARGETS = $(SOURCES:%.c=$(BIN_DIR)/%)

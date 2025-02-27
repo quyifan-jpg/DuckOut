@@ -1,0 +1,33 @@
+
+### RDMA setup:
+
+sudo apt update
+sudo apt install rdma-core infiniband-diags ibverbs-utils libibverbs-dev
+sudo apt-get install librdmacm-dev libibverbs-dev
+
+- load $Mellanox drivers:
+sudo modprobe mlx4_ib
+sudo modprobe mlx4_en
+lsmod | grep mlx
+
+- check devices:
+ibv_devinfo
+
+### modify lin:
+ip link show ibp8s0
+
+sudo ip link set ibp8s0 up
+
+- assign ip node 1:
+sudo ip addr add 192.168.100.2/24 dev ibp8s0
+sudo ip link set ibp8s0 up
+
+- assign ip node 2:\
+sudo ip addr add 192.168.100.2/24 dev ibp8s0
+sudo ip link set ibp8s0 up
+
+### perf test
+- setup test server:
+ib_send_bw -d mlx4_0 -i 1
+- run client:
+ib_send_bw -d mlx4_0 -i 1 192.168.100.2
