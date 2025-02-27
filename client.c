@@ -3,7 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <arpa/inet.h>
-#include "duckdb.h"
+#include <duckdb.h>
 
 #define PORT 1234
 
@@ -12,7 +12,7 @@ int main(void) {
     duckdb_connection con;
     duckdb_state status;
     duckdb_result res;
-    const char *db_path = "tpch-sf1.db";
+    const char *db_path = "tpch.duckdb";
     
     // --- DuckDB setup ---
     status = duckdb_open(db_path, &db);

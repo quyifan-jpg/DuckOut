@@ -1,27 +1,28 @@
 # Compiler and flags
 CC = gcc
-# CFLAGS = -I/opt/homebrew/include
-# LDFLAGS = -L/opt/homebrew/lib -lduckdb
-CFLAGS = -I/DuckOut/include  # Update include path if needed
-LDFLAGS = -L/DuckOut/lib -duckdb 
+CFLAGS = -I./lib
+LDFLAGS = -L./lib -lduckdb
+
 # Output directory
 BIN_DIR = bin
 
-# Targets for server and client
-all: $(BIN_DIR)/server $(BIN_DIR)/client $(BIN_DIR)/generate_tpch
+# Source files
+SOURCES = server.c client.c generate_tpch.c
+
+# Targets
+TARGETS = $(SOURCES:%.c=$(BIN_DIR)/%)
+
+# Default target
+all: $(TARGETS)
 
 # Ensure the output directory exists
 $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
 
-$(BIN_DIR)/server: server.c | $(BIN_DIR)
-	$(CC) $(CFLAGS) server.c -o $(BIN_DIR)/server $(LDFLAGS)
+# Build each target
+$(BIN_DIR)/%: %.c | $(BIN_DIR)
+	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
 
-$(BIN_DIR)/client: client.c | $(BIN_DIR)
-	$(CC) $(CFLAGS) client.c -o $(BIN_DIR)/client $(LDFLAGS)
-
-$(BIN_DIR)/generate_tpch: generate_tpch.c | $(BIN_DIR)
-	$(CC) $(CFLAGS) generate_tpch.c -o $(BIN_DIR)/generate_tpch $(LDFLAGS)
-
+# Clean up
 clean:
 	rm -rf $(BIN_DIR)
