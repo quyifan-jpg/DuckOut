@@ -1,8 +1,9 @@
 # Compiler and flags
 CC = gcc
-CFLAGS = -I/opt/homebrew/include
-LDFLAGS = -L/opt/homebrew/lib -lduckdb
-
+# CFLAGS = -I/opt/homebrew/include
+# LDFLAGS = -L/opt/homebrew/lib -lduckdb
+CFLAGS = -I/DuckOut/include  # Update include path if needed
+LDFLAGS = -L/DuckOut/lib -duckdb 
 # Output directory
 BIN_DIR = bin
 
