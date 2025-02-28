@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <rdma/rdma_cma.h>
 #include <infiniband/verbs.h>
-#include <duckdb.h>
+#include "duckdb.h"
 
 #define PORT "12345"  // Use a string port for rdma_resolve_addr
 #define BUFFER_SIZE (1024 * 1024)  // 1MB buffer

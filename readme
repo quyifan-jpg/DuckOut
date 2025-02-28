@@ -1,3 +1,7 @@
+### install dependencies:
+
+wget https://github.com/duckdb/duckdb/releases/download/v1.2.0/libduckdb-linux-amd64.zip
+unzip libduckdb-linux-amd64.zip
 
 ### RDMA setup:
 
@@ -13,18 +17,18 @@ lsmod | grep mlx
 - check devices:
 ibv_devinfo
 
-### modify lin:
-ip link show ibp8s0
+### modify lin: ibp130s0
+ip link show $infiniband_interface
 
-sudo ip link set ibp8s0 up
+sudo ip link set $infiniband_interface up
 
 - assign ip node 1:
-sudo ip addr add 192.168.100.2/24 dev ibp8s0
-sudo ip link set ibp8s0 up
+sudo ip addr add 192.168.100.1/24 dev $infiniband_interface
+sudo ip link set $infiniband_interface up
 
 - assign ip node 2:\
-sudo ip addr add 192.168.100.2/24 dev ibp8s0
-sudo ip link set ibp8s0 up
+sudo ip addr add 192.168.100.2/24 dev $infiniband_interface
+sudo ip link set $infiniband_interface up
 
 ### perf test
 - setup test server:

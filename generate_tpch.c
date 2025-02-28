@@ -1,6 +1,6 @@
 // generate tpch data with scale factor 1
 
-#include <duckdb.h>
+#include "duckdb.h"
 #include <stdio.h>
 
 int main() {
