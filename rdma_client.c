@@ -112,17 +112,7 @@ int main(void) {
     }
     printf("\n----------------------------------------\n");
 
-    // Print first 10 rows
-    // printf("First 10 rows of data:\n");
-    // for (idx_t row = 0; row < (row_count < 10 ? row_count : 10); row++) {
-    //     printf("\nRow %llu:\n", row);
-    //     for (idx_t col = 0; col < column_count; col++) {
-    //         char* str_val = get_value_as_string(&res, row, col);
-    //         printf("  Column %llu: %s\n", col, str_val);
-    //         duckdb_free(str_val);
-    //     }
-    //     printf("----------------------------------------\n");
-    // }
+
 
     // --- RDMA Setup ---
     printf("Creating RDMA event channel...\n");
@@ -297,27 +287,63 @@ int main(void) {
         if (ibv_post_send(res_rdma.qp, &send_wr, &bad_wr))
             die("ibv_post_send row");
 
-        // Wait for server's acknowledgment
+        // Wait for server's acknowledgment with proper error handling
         struct ibv_recv_wr recv_wr = {0}, *bad_recv_wr = NULL;
         struct ibv_sge recv_sge = {
             .addr = (uintptr_t)res_rdma.send_regions[res_rdma.current_buffer],
             .length = BUFFER_SIZE,
             .lkey = res_rdma.send_mrs[res_rdma.current_buffer]->lkey
         };
+        recv_wr.wr_id = row;  // Set wr_id to current row number
         recv_wr.sg_list = &recv_sge;
         recv_wr.num_sge = 1;
 
-        // Post receive for acknowledgment
-        if (ibv_post_recv(res_rdma.qp, &recv_wr, &bad_recv_wr))
+        printf("Posting receive for ACK_%llu\n", row);
+        if (ibv_post_recv(res_rdma.qp, &recv_wr, &bad_recv_wr)) {
+            printf("Error posting receive: %s (%d)\n", strerror(errno), errno);
             die("ibv_post_recv ack");
+        }
 
-        // Wait for acknowledgment completion
-        while (ibv_poll_cq(res_rdma.cq, 1, &wc) < 1)
-            ;
-        if (wc.status != IBV_WC_SUCCESS)
+        // Wait for acknowledgment completion with timeout
+        struct ibv_wc wc;
+        int ne;
+        int poll_count = 0;
+        const int MAX_POLL_CQ_ATTEMPTS = 1000000;
+
+        printf("Waiting for acknowledgment for row %llu...\n", row);
+        do {
+            ne = ibv_poll_cq(res_rdma.cq, 1, &wc);
+            if (ne < 0) {
+                printf("Error polling CQ: %s\n", strerror(errno));
+                die("Error polling CQ for ack");
+            }
+            if (++poll_count >= MAX_POLL_CQ_ATTEMPTS) {
+                printf("Timeout waiting for acknowledgment\n");
+                die("Acknowledgment timeout");
+            }
+            
+            // Add small delay between polls to prevent CPU spinning
+            if (ne == 0) {
+                usleep(100);  // 100 microseconds
+            }
+        } while (ne < 1);
+
+        if (wc.status == IBV_WC_SUCCESS) {
+            // Verify the acknowledgment
+            char expected_ack[64];
+            snprintf(expected_ack, sizeof(expected_ack), "ACK_%llu", row);
+            
+            if (strncmp(res_rdma.send_regions[res_rdma.current_buffer], expected_ack, strlen(expected_ack)) == 0) {
+                printf("Received correct acknowledgment for row %llu\n", row);
+            } else {
+                printf("WARNING: Received unexpected acknowledgment: %s\n", 
+                       res_rdma.send_regions[res_rdma.current_buffer]);
+            }
+        } else {
+            printf("Receive completion failed with status: %s (%d)\n", 
+                   ibv_wc_status_str(wc.status), wc.status);
             die("Failed receive completion for ack");
-
-        printf("Received acknowledgment for row %llu\n", row);
+        }
 
         res_rdma.current_buffer = (res_rdma.current_buffer + 1) % NUM_BUFFERS;
     }

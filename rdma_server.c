@@ -17,6 +17,8 @@ struct rdma_resources {
     struct ibv_qp *qp;
     char *recv_regions[NUM_BUFFERS];
     struct ibv_mr *recv_mrs[NUM_BUFFERS];
+    char *ack_buffer;           // Add separate ack buffer
+    struct ibv_mr *ack_mr;      // Add separate MR for ack
     int current_buffer;
 };
 
@@ -95,6 +97,15 @@ int main(void) {
             die("ibv_reg_mr");
     }
 
+    // Allocate separate buffer for acknowledgments
+    res_rdma.ack_buffer = malloc(64);  // Small buffer for acks
+    if (!res_rdma.ack_buffer)
+        die("malloc ack_buffer");
+    res_rdma.ack_mr = ibv_reg_mr(res_rdma.pd, res_rdma.ack_buffer, 
+        64, IBV_ACCESS_LOCAL_WRITE | IBV_ACCESS_REMOTE_WRITE);
+    if (!res_rdma.ack_mr)
+        die("ibv_reg_mr ack");
+
     // Post initial receives for all buffers
     for (int i = 0; i < NUM_BUFFERS; i++) {
         struct ibv_sge sge = {
@@ -134,8 +145,8 @@ int main(void) {
         die("Failed receive completion");
 
     id_t row_count, column_count;
-    sscanf(res_rdma.recv_regions[0], "%llu,%llu", &row_count, &column_count);
-    printf("\nMetadata received: %llu rows and %llu columns\n\n", row_count, column_count);
+    sscanf(res_rdma.recv_regions[0], "%u,%u", &row_count, &column_count);
+    printf("\nMetadata received: %u rows and %u columns\n\n", row_count, column_count);
 
     // Print column separator line
     printf("----------------------------------------\n");
@@ -158,11 +169,11 @@ int main(void) {
         // Split and print each column value
         char *token = strtok(data, ",");
         int col = 0;
-        while (token && col < column_count) {
-            printf("  Column %d: %s\n", col, token);
-            token = strtok(NULL, ",");
-            col++;
-        }
+        // while (token && col < column_count) {
+        //     printf("  Column %d: %s\n", col, token);
+        //     token = strtok(NULL, ",");
+        //     col++;
+        // }
         printf("----------------------------------------\n");
 
         // Clear buffer before posting new receive
@@ -182,35 +193,83 @@ int main(void) {
             die("ibv_post_recv");
 
         // Send acknowledgment back to client
-        char ack_msg[64];
-        snprintf(ack_msg, sizeof(ack_msg), "ACK_%d", recv_count);
+        snprintf(res_rdma.ack_buffer, 64, "ACK_%d", recv_count);
+        
+        // Add more detailed debug prints
+        printf("----------------------------------------\n");
+        printf("Ack buffer contents: '%s'\n", res_rdma.ack_buffer);
+        printf("Ack buffer length: %zu\n", strlen(res_rdma.ack_buffer) + 1);
         
         struct ibv_send_wr send_wr = {0}, *bad_send_wr = NULL;
         struct ibv_sge send_sge = {
-            .addr = (uintptr_t)res_rdma.recv_regions[res_rdma.current_buffer],
-            .length = strlen(ack_msg) + 1,
-            .lkey = res_rdma.recv_mrs[res_rdma.current_buffer]->lkey
+            .addr = (uintptr_t)res_rdma.ack_buffer,
+            .length = strlen(res_rdma.ack_buffer) + 1,
+            .lkey = res_rdma.ack_mr->lkey
         };
-        
+
+        send_wr.wr_id = recv_count;
+        send_wr.opcode = IBV_WR_SEND;
         send_wr.sg_list = &send_sge;
         send_wr.num_sge = 1;
-        send_wr.opcode = IBV_WR_SEND;
         send_wr.send_flags = IBV_SEND_SIGNALED;
 
-        // Copy acknowledgment to buffer
-        memcpy(res_rdma.recv_regions[res_rdma.current_buffer], ack_msg, strlen(ack_msg) + 1);
+        // Add debug prints for memory registration
+        printf("Memory registration debug:\n");
+        printf("  ack_buffer address: %p\n", res_rdma.ack_buffer);
+        printf("  ack_mr address: %p\n", res_rdma.ack_mr);
+        printf("  ack_mr->lkey: 0x%x\n", res_rdma.ack_mr->lkey);
+        printf("  send_sge.addr: 0x%lx\n", send_sge.addr);
+        printf("  send_sge.length: %d\n", send_sge.length);
+        printf("  send_sge.lkey: 0x%x\n", send_sge.lkey);
 
-        if (ibv_post_send(res_rdma.qp, &send_wr, &bad_send_wr))
-            die("ibv_post_send ack");
+        // Verify memory region exists
+        if (res_rdma.ack_mr == NULL) {
+            printf("  ERROR: ack_mr is NULL!\n");
+        }
 
-        // Wait for send completion
+        printf("Posting send for ACK_%d\n", recv_count);
+        int ret = ibv_post_send(res_rdma.qp, &send_wr, &bad_send_wr);
+        if (ret) {
+            printf("Error posting send: %s (%d)\n", strerror(errno), errno);
+            break;
+        }
+
+        // Wait for send completion with timeout
         struct ibv_wc wc;
-        while (ibv_poll_cq(res_rdma.cq, 1, &wc) < 1)
-            ;
-        if (wc.status != IBV_WC_SUCCESS)
-            die("Failed send completion for ack");
+        int ne;
+        int poll_count = 0;
+        const int MAX_POLL_CQ_ATTEMPTS = 1000000;
 
-        printf("Sent acknowledgment for row %d\n", recv_count);
+        printf("Waiting for send completion for ACK_%d...\n", recv_count);
+        do {
+            ne = ibv_poll_cq(res_rdma.cq, 1, &wc);
+            if (ne < 0) {
+                printf("Error polling CQ: %s\n", strerror(errno));
+                break;
+            }
+            if (++poll_count >= MAX_POLL_CQ_ATTEMPTS) {
+                printf("Timeout waiting for send completion\n");
+                break;
+            }
+            
+            // Add small delay between polls to prevent CPU spinning
+            
+        } while (ne < 1);
+
+        if (ne > 0) {
+            if (wc.status == IBV_WC_SUCCESS) {
+                if (wc.wr_id != recv_count) {
+                    printf("WARNING: Completed wr_id %ld when expecting %d\n", 
+                           wc.wr_id, recv_count);
+                }
+                printf("Send completed successfully for ACK_%ld\n", wc.wr_id);
+            } else {
+                printf("Send completion failed with status: %s (%d)\n", 
+                       ibv_wc_status_str(wc.status), wc.status);
+                break;
+            }
+        }
+        printf("----------------------------------------\n");
 
         res_rdma.current_buffer = (res_rdma.current_buffer + 1) % NUM_BUFFERS;
         recv_count++;
@@ -228,6 +287,8 @@ int main(void) {
     rdma_destroy_id(conn);
     rdma_destroy_id(listener);
     rdma_destroy_event_channel(ec);
+    ibv_dereg_mr(res_rdma.ack_mr);
+    free(res_rdma.ack_buffer);
 
     return 0;
 }
