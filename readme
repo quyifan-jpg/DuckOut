@@ -5,7 +5,7 @@ sudo apt update
 sudo apt install rdma-core infiniband-diags ibverbs-utils libibverbs-dev
 sudo apt-get install librdmacm-dev libibverbs-dev
 
-- load $Mellanox drivers:
+- load $Mellanox# drivers:
 sudo modprobe mlx4_ib
 sudo modprobe mlx4_en
 lsmod | grep mlx

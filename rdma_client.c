@@ -61,7 +61,7 @@ int main(void) {
     struct sockaddr_in server_addr = {0};
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(atoi(PORT));
-    server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+    server_addr.sin_addr.s_addr = inet_addr("192.168.100.1");
 
     if (rdma_resolve_addr(conn, NULL, (struct sockaddr *)&server_addr, 2000))
         die("rdma_resolve_addr");
@@ -129,7 +129,7 @@ int main(void) {
 
     // --- RDMA Data Transfer ---
     // Example: send an initial message ("Hello") as before
-    snprintf(res_rdma.send_region, BUFFER_SIZE, "Hello");
+    // snprintf(res_rdma.send_region, BUFFER_SIZE, "Hello");
     struct ibv_sge sge = {
         .addr = (uintptr_t)res_rdma.send_region,
         .length = strlen(res_rdma.send_region) + 1,
@@ -141,8 +141,8 @@ int main(void) {
     send_wr.opcode = IBV_WR_SEND;
     send_wr.send_flags = IBV_SEND_SIGNALED;
 
-    if (ibv_post_send(res_rdma.qp, &send_wr, &bad_wr))
-        die("ibv_post_send");
+    // if (ibv_post_send(res_rdma.qp, &send_wr, &bad_wr))
+    //     die("ibv_post_send");
 
     // Normally you would poll the CQ for a completion here.
 
