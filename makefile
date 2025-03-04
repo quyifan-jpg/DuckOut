@@ -1,7 +1,7 @@
 # Compiler and flags
 CC = gcc
-CFLAGS = -I./bin
-LDFLAGS = -L./bin -lduckdb -Wl,-rpath,./bin -lrdmacm -libverbs
+CFLAGS = -I./lib
+LDFLAGS = -L./lib -lduckdb -Wl,-rpath,./lib -lrdmacm -libverbs
 
 # Output directory
 BIN_DIR = bin

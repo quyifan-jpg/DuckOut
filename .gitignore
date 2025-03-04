@@ -1,4 +1,3 @@
-lib/
 bin/
 duckdb/
 tpch.duckdb
