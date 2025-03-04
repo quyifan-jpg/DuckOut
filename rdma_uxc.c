@@ -252,19 +252,25 @@ int main(int argc, char *argv[]) {
         free(remote_addr);
 
         /* ----------------- Client: Send a Message ----------------- */
-        const char *message = "Hello from client";
-        ucs_status_ptr_t send_req = ucp_tag_send_nb(ep, message, strlen(message) + 1,
+        // Prepare a larger message for RDMA transfer
+        char send_buffer[MAX_MESSAGE];
+        memset(send_buffer, 'A', MAX_MESSAGE - 1);
+        send_buffer[MAX_MESSAGE - 1] = '\0';
+        
+        // Send using RDMA
+        ucs_status_ptr_t send_req = ucp_tag_send_nb(ep, send_buffer, MAX_MESSAGE,
                                                     ucp_dt_make_contig(1), TAG, NULL);
         if (UCS_PTR_IS_ERR(send_req)) {
             fprintf(stderr, "Client: Failed to send message\n");
             exit(EXIT_FAILURE);
         }
+
         // Wait for completion
         while (ucp_request_check_status(send_req) == UCS_INPROGRESS) {
             progress_worker(worker);
         }
         ucp_request_free(send_req);
-        printf("Client sent message: %s\n", message);
+        printf("Client sent RDMA message of size %d bytes\n", MAX_MESSAGE);
 
         /* Clean up */
         ucp_ep_destroy(ep);
