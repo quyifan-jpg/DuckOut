@@ -54,6 +54,13 @@ ib_send_bw -d mlx4_0 -i 1
 ib_send_bw -d mlx4_0 -i 1 192.168.100.2
 
 ### test ucx
+
+# On server (192.168.100.1)
+ucx_perftest -d mlx4_0 -t tag_bw
+
+# On client (192.168.100.2)
+ucx_perftest -d mlx4_0 -t tag_bw 192.168.100.1
+
 cd ../DuckOut
 make
 ./bin/rdma_uxc -c 192.168.100.1
