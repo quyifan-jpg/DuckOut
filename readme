@@ -17,10 +17,23 @@ lsmod | grep mlx
 - check devices:
 ibv_devinfo
 
+# uxc dependency 
+cd ..
+git clone https://github.com/openucx/ucx.git
+cd ucx
+./autogen.sh
+./configure --prefix=/usr/local --with-verbs --with-rdmacm
+make -j4
+sudo make install
+cd DuckOut
+
 ### modify lin: ibp130s0
 ip link show $infiniband_interface
 
 sudo ip link set $infiniband_interface up
+ibp8s0
+### The output should show state UP if the interface is now active.
+
 
 - assign ip node 1:
 sudo ip addr add 192.168.100.1/24 dev $infiniband_interface
