@@ -9,6 +9,7 @@ sudo apt update
 sudo apt install rdma-core infiniband-diags ibverbs-utils libibverbs-dev
 sudo apt-get install librdmacm-dev libibverbs-dev
 sudo apt install autoconf automake libtool
+sudo apt-get install libucx-dev ucx-utils
 
 - load $Mellanox# drivers:
 sudo modprobe mlx4_ib
@@ -33,18 +34,18 @@ cd ../DuckOut
 ### modify lin: ibp130s0
 ip link show $infiniband_interface
 
-sudo ip link set $infiniband_interface up
+sudo ip link set ibp8s0 up
 ibp8s0
 ### The output should show state UP if the interface is now active.
 
 
 - assign ip node 1:
-sudo ip addr add 192.168.100.1/24 dev $infiniband_interface
-sudo ip link set $infiniband_interface up
+sudo ip addr add 192.168.100.1/24 dev ibp8s0
+sudo ip link set ibp8s0 up
 
 - assign ip node 2:\
-sudo ip addr add 192.168.100.2/24 dev $infiniband_interface
-sudo ip link set $infiniband_interface up
+sudo ip addr add 192.168.100.2/24 dev ibp8s0
+sudo ip link set ibp8s0 up
 
 
 ### perf test
