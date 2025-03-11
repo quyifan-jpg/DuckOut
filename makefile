@@ -11,10 +11,13 @@ LDFLAGS = -L./lib -L/usr/local/lib -lduckdb -Wl,-rpath,./lib -Wl,-rpath,/usr/loc
 # Output directory
 BIN_DIR = bin
 
+# Helper library object files
+CLIENT_HELPER_OBJ = rdma_client_helper.o
+SERVER_HELPER_OBJ = rdma_server_helper.o
+
 # Source files
-# If you want to add rdma_uxc.c to your build, add it to the SOURCES list:
-SOURCES =   rdma_client.c rdma_server.c generate_tpch.c
-# server.c client.c generate_tpch.c rdma_client.c rdma_server.c
+SOURCES = rdma_client.c rdma_server.c generate_tpch.c
+
 # Targets
 TARGETS = $(SOURCES:%.c=$(BIN_DIR)/%)
 
@@ -25,10 +28,26 @@ all: $(TARGETS)
 $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
 
-# Build each target
-$(BIN_DIR)/%: %.c | $(BIN_DIR)
+# Build client helper object file
+$(CLIENT_HELPER_OBJ): rdma_client_helper.c rdma_client_helper.h
+	$(CC) $(CFLAGS) -c rdma_client_helper.c -o $(CLIENT_HELPER_OBJ)
+
+# Build server helper object file
+$(SERVER_HELPER_OBJ): rdma_server_helper.c rdma_server_helper.h
+	$(CC) $(CFLAGS) -c rdma_server_helper.c -o $(SERVER_HELPER_OBJ)
+
+# Build client with helper libraries
+$(BIN_DIR)/rdma_client: rdma_client.c $(CLIENT_HELPER_OBJ) | $(BIN_DIR)
+	$(CC) $(CFLAGS) rdma_client.c $(CLIENT_HELPER_OBJ) -o $@ $(LDFLAGS)
+
+# Build server with helper libraries
+$(BIN_DIR)/rdma_server: rdma_server.c $(SERVER_HELPER_OBJ) | $(BIN_DIR)
+	$(CC) $(CFLAGS) rdma_server.c $(SERVER_HELPER_OBJ) -o $@ $(LDFLAGS)
+
+# Build generate_tpch
+$(BIN_DIR)/generate_tpch: generate_tpch.c | $(BIN_DIR)
 	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
 
 # Clean up
 clean:
-	rm -rf $(BIN_DIR)
+	rm -rf $(BIN_DIR) $(CLIENT_HELPER_OBJ) $(SERVER_HELPER_OBJ)
