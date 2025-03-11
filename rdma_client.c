@@ -24,6 +24,33 @@ static uint64_t get_current_time_us() {
     return tv.tv_sec * 1000000 + tv.tv_usec;
 }
 
+static int send_message(ucp_worker_h worker, ucp_ep_h ep, const void *buffer, size_t length) {
+    ucp_request_param_t send_param;
+    memset(&send_param, 0, sizeof(send_param));
+    send_param.op_attr_mask = UCP_OP_ATTR_FIELD_CALLBACK | 
+                             UCP_OP_ATTR_FIELD_DATATYPE;
+    send_param.datatype = ucp_dt_make_contig(1);
+    send_param.cb.send = request_completed;
+
+    // 发送消息
+    ucs_status_ptr_t request = ucp_tag_send_nbx(ep, buffer, length, 0x1337, &send_param);
+    
+    if (UCS_PTR_IS_ERR(request)) {
+        fprintf(stderr, "发送失败: %s\n", ucs_status_string(UCS_PTR_STATUS(request)));
+        return -1;
+    }
+
+    // 等待发送完成
+    if (UCS_PTR_IS_PTR(request)) {
+        while (!ucp_request_is_completed(request)) {
+            ucp_worker_progress(worker);  // 现在可以使用传入的 worker
+        }
+        ucp_request_free(request);
+    }
+
+    return length;
+}
+
 int main(int argc, char **argv)
 {
     ucp_params_t ucp_params;
@@ -87,20 +114,26 @@ int main(int argc, char **argv)
     }
     printf("Connected to server %s:%d\n", SERVER_IP, SERVER_PORT);
 
+    // 等待连接建立
+    ucp_ep_params_t ep_params_local;
+    memset(&ep_params_local, 0, sizeof(ep_params_local));
+    ep_params_local.field_mask = UCP_EP_PARAM_FIELD_ERR_HANDLING_MODE;
+    ep_params_local.err_mode = UCP_ERR_HANDLING_MODE_PEER;
+    
+    // 发送一个小消息来确认连接建立
+    char test_msg[] = "test";
+    if (send_message(worker, ep, test_msg, strlen(test_msg)) < 0) {
+        fprintf(stderr, "连接测试失败\n");
+        goto cleanup;
+    }
+    
+    // 等待一小段时间确保连接完全建立
+    usleep(1000000);  // 100ms
+
     /* 准备测试数据 */
     char send_buf[BUF_SIZE];
     memset(send_buf, 'A', BUF_SIZE);
     size_t msg_len = BUF_SIZE;
-
-    // 添加请求参数结构
-    ucp_request_param_t send_param;
-    memset(&send_param, 0, sizeof(send_param));
-    send_param.op_attr_mask = UCP_OP_ATTR_FIELD_CALLBACK | 
-                             UCP_OP_ATTR_FIELD_DATATYPE |
-                             UCP_OP_ATTR_FIELD_USER_DATA;
-    send_param.datatype = ucp_dt_make_contig(1);
-    send_param.cb.send = request_completed;
-    send_param.user_data = NULL;
 
     // 开始测试
     uint64_t total_time = 0;
@@ -113,21 +146,9 @@ int main(int argc, char **argv)
     start_time = get_current_time_us();
 
     for (int i = 0; i < TEST_ITERATIONS; i++) {
-        // 使用 nbx 版本的发送函数
-        ucs_status_ptr_t sreq = ucp_tag_send_nbx(ep, send_buf, msg_len, 0x1337, &send_param);
-
-        if (UCS_PTR_IS_ERR(sreq)) {
-            fprintf(stderr, "Iteration %d: ucp_tag_send_nbx failed: %s\n", 
-                    i, ucs_status_string(UCS_PTR_STATUS(sreq)));
+        if (send_message(worker, ep, send_buf, msg_len) < 0) {
+            fprintf(stderr, "Iteration %d failed\n", i);
             continue;
-        }
-
-        // 等待发送完成
-        if (sreq != NULL) {
-            while (!ucp_request_is_completed(sreq)) {
-                ucp_worker_progress(worker);
-            }
-            ucp_request_free(sreq);
         }
 
         successful_sends++;

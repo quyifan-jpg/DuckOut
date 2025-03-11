@@ -13,7 +13,7 @@ BIN_DIR = bin
 
 # Source files
 # If you want to add rdma_uxc.c to your build, add it to the SOURCES list:
-SOURCES =   rdma_client.c rdma_server.c
+SOURCES =   rdma_client.c rdma_server.c generate_tpch.c
 # server.c client.c generate_tpch.c rdma_client.c rdma_server.c
 # Targets
 TARGETS = $(SOURCES:%.c=$(BIN_DIR)/%)
