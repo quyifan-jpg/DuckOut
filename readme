@@ -30,7 +30,10 @@ cd ucx
 make -j4
 sudo make install
 cd ../DuckOut
+uxc_info -v
 
+# if error:
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 ### modify lin: ibp130s0
 ip link show $infiniband_interface
 
