@@ -11,7 +11,6 @@
 
 // Client-specific definitions
 #define SERVER_PORT 13337
-#define BUF_SIZE 1024
 #define TEST_ITERATIONS 100  // Number of test iterations
 
 // Client context structure

@@ -4,7 +4,8 @@
 #include "rdma_client_helper.h"
 
 #define SERVER_IP "192.168.100.1"
-#define BUF_SIZE 1024
+
+#define BUF_SIZE 1024 *1024
 #define TEST_ITERATIONS 100  // 测试次数
 
 int main(int argc, char **argv) {

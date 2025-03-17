@@ -16,7 +16,7 @@ CLIENT_HELPER_OBJ = rdma_client_helper.o
 SERVER_HELPER_OBJ = rdma_server_helper.o
 
 # Source files
-SOURCES = rdma_client.c rdma_server.c generate_tpch.c
+SOURCES = rdma_client.c rdma_server.c generate_tpch.c ucp_hello_world.c
 
 # Targets
 TARGETS = $(SOURCES:%.c=$(BIN_DIR)/%)
@@ -48,6 +48,9 @@ $(BIN_DIR)/rdma_server: rdma_server.c $(SERVER_HELPER_OBJ) | $(BIN_DIR)
 $(BIN_DIR)/generate_tpch: generate_tpch.c | $(BIN_DIR)
 	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
 
+# Build ucp_hello_world
+$(BIN_DIR)/ucp_hello_world: ucp_hello_world.c | $(BIN_DIR)
+	$(CC) $(CFLAGS) ucp_hello_world.c -o $@ $(LDFLAGS)
 # Clean up
 clean:
 	rm -rf $(BIN_DIR) $(CLIENT_HELPER_OBJ) $(SERVER_HELPER_OBJ)

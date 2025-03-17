@@ -197,6 +197,7 @@ void run_performance_test(client_context_t *client_ctx, int iterations, size_t m
         if ((i + 1) % 10 == 0) {
             printf("Completed %d/%d iterations\n", i + 1, iterations);
         }
+
     }
 
     end_time = get_current_time_us();
