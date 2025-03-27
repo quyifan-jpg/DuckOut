@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/users/Yifan32/DuckOut/Krpc/src/include
+CXX_INCLUDES = -I/users/Yifan32/DuckOut/src/include
 
-CXX_FLAGS = -std=c++11 -Wall -std=gnu++11
+CXX_FLAGS = -g -g -O0 -std=c++11 -Wall -g -O0 -std=gnu++11
 

@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /users/Yifan32/DuckOut/Krpc
+CMAKE_SOURCE_DIR = /users/Yifan32/DuckOut
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /users/Yifan32/DuckOut/Krpc/build
+CMAKE_BINARY_DIR = /users/Yifan32/DuckOut/build
 
 # Include any dependencies generated for this target.
 include example/callee/CMakeFiles/server.dir/depend.make
@@ -72,30 +72,30 @@ include example/callee/CMakeFiles/server.dir/flags.make
 example/callee/CMakeFiles/server.dir/Kserver.cc.o: example/callee/CMakeFiles/server.dir/flags.make
 example/callee/CMakeFiles/server.dir/Kserver.cc.o: ../example/callee/Kserver.cc
 example/callee/CMakeFiles/server.dir/Kserver.cc.o: example/callee/CMakeFiles/server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/Yifan32/DuckOut/Krpc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object example/callee/CMakeFiles/server.dir/Kserver.cc.o"
-	cd /users/Yifan32/DuckOut/Krpc/build/example/callee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT example/callee/CMakeFiles/server.dir/Kserver.cc.o -MF CMakeFiles/server.dir/Kserver.cc.o.d -o CMakeFiles/server.dir/Kserver.cc.o -c /users/Yifan32/DuckOut/Krpc/example/callee/Kserver.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/Yifan32/DuckOut/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object example/callee/CMakeFiles/server.dir/Kserver.cc.o"
+	cd /users/Yifan32/DuckOut/build/example/callee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT example/callee/CMakeFiles/server.dir/Kserver.cc.o -MF CMakeFiles/server.dir/Kserver.cc.o.d -o CMakeFiles/server.dir/Kserver.cc.o -c /users/Yifan32/DuckOut/example/callee/Kserver.cc
 
 example/callee/CMakeFiles/server.dir/Kserver.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/Kserver.cc.i"
-	cd /users/Yifan32/DuckOut/Krpc/build/example/callee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/Yifan32/DuckOut/Krpc/example/callee/Kserver.cc > CMakeFiles/server.dir/Kserver.cc.i
+	cd /users/Yifan32/DuckOut/build/example/callee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/Yifan32/DuckOut/example/callee/Kserver.cc > CMakeFiles/server.dir/Kserver.cc.i
 
 example/callee/CMakeFiles/server.dir/Kserver.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/Kserver.cc.s"
-	cd /users/Yifan32/DuckOut/Krpc/build/example/callee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/Yifan32/DuckOut/Krpc/example/callee/Kserver.cc -o CMakeFiles/server.dir/Kserver.cc.s
+	cd /users/Yifan32/DuckOut/build/example/callee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/Yifan32/DuckOut/example/callee/Kserver.cc -o CMakeFiles/server.dir/Kserver.cc.s
 
 example/callee/CMakeFiles/server.dir/__/user.pb.cc.o: example/callee/CMakeFiles/server.dir/flags.make
 example/callee/CMakeFiles/server.dir/__/user.pb.cc.o: ../example/user.pb.cc
 example/callee/CMakeFiles/server.dir/__/user.pb.cc.o: example/callee/CMakeFiles/server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/Yifan32/DuckOut/Krpc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object example/callee/CMakeFiles/server.dir/__/user.pb.cc.o"
-	cd /users/Yifan32/DuckOut/Krpc/build/example/callee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT example/callee/CMakeFiles/server.dir/__/user.pb.cc.o -MF CMakeFiles/server.dir/__/user.pb.cc.o.d -o CMakeFiles/server.dir/__/user.pb.cc.o -c /users/Yifan32/DuckOut/Krpc/example/user.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/Yifan32/DuckOut/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object example/callee/CMakeFiles/server.dir/__/user.pb.cc.o"
+	cd /users/Yifan32/DuckOut/build/example/callee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT example/callee/CMakeFiles/server.dir/__/user.pb.cc.o -MF CMakeFiles/server.dir/__/user.pb.cc.o.d -o CMakeFiles/server.dir/__/user.pb.cc.o -c /users/Yifan32/DuckOut/example/user.pb.cc
 
 example/callee/CMakeFiles/server.dir/__/user.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/__/user.pb.cc.i"
-	cd /users/Yifan32/DuckOut/Krpc/build/example/callee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/Yifan32/DuckOut/Krpc/example/user.pb.cc > CMakeFiles/server.dir/__/user.pb.cc.i
+	cd /users/Yifan32/DuckOut/build/example/callee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/Yifan32/DuckOut/example/user.pb.cc > CMakeFiles/server.dir/__/user.pb.cc.i
 
 example/callee/CMakeFiles/server.dir/__/user.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/__/user.pb.cc.s"
-	cd /users/Yifan32/DuckOut/Krpc/build/example/callee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/Yifan32/DuckOut/Krpc/example/user.pb.cc -o CMakeFiles/server.dir/__/user.pb.cc.s
+	cd /users/Yifan32/DuckOut/build/example/callee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/Yifan32/DuckOut/example/user.pb.cc -o CMakeFiles/server.dir/__/user.pb.cc.s
 
 # Object files for target server
 server_OBJECTS = \
@@ -110,18 +110,18 @@ server_EXTERNAL_OBJECTS =
 ../bin/server: example/callee/CMakeFiles/server.dir/build.make
 ../bin/server: src/libkrpc_core.a
 ../bin/server: example/callee/CMakeFiles/server.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/users/Yifan32/DuckOut/Krpc/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable ../../../bin/server"
-	cd /users/Yifan32/DuckOut/Krpc/build/example/callee && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/server.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/users/Yifan32/DuckOut/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable ../../../bin/server"
+	cd /users/Yifan32/DuckOut/build/example/callee && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/server.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 example/callee/CMakeFiles/server.dir/build: ../bin/server
 .PHONY : example/callee/CMakeFiles/server.dir/build
 
 example/callee/CMakeFiles/server.dir/clean:
-	cd /users/Yifan32/DuckOut/Krpc/build/example/callee && $(CMAKE_COMMAND) -P CMakeFiles/server.dir/cmake_clean.cmake
+	cd /users/Yifan32/DuckOut/build/example/callee && $(CMAKE_COMMAND) -P CMakeFiles/server.dir/cmake_clean.cmake
 .PHONY : example/callee/CMakeFiles/server.dir/clean
 
 example/callee/CMakeFiles/server.dir/depend:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /users/Yifan32/DuckOut/Krpc /users/Yifan32/DuckOut/Krpc/example/callee /users/Yifan32/DuckOut/Krpc/build /users/Yifan32/DuckOut/Krpc/build/example/callee /users/Yifan32/DuckOut/Krpc/build/example/callee/CMakeFiles/server.dir/DependInfo.cmake --color=$(COLOR)
+	cd /users/Yifan32/DuckOut/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /users/Yifan32/DuckOut /users/Yifan32/DuckOut/example/callee /users/Yifan32/DuckOut/build /users/Yifan32/DuckOut/build/example/callee /users/Yifan32/DuckOut/build/example/callee/CMakeFiles/server.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : example/callee/CMakeFiles/server.dir/depend
 

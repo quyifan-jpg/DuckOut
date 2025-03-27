@@ -1,6 +1,6 @@
 src/CMakeFiles/krpc_core.dir/Krpcconfig.cc.o: \
- /users/Yifan32/DuckOut/Krpc/src/Krpcconfig.cc /usr/include/stdc-predef.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpcconfig.h \
+ /users/Yifan32/DuckOut/src/Krpcconfig.cc /usr/include/stdc-predef.h \
+ /users/Yifan32/DuckOut/src/include/Krpcconfig.h \
  /usr/include/c++/11/unordered_map /usr/include/c++/11/type_traits \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \

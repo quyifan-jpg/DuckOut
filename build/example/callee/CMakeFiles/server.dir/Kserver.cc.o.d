@@ -1,5 +1,5 @@
 example/callee/CMakeFiles/server.dir/Kserver.cc.o: \
- /users/Yifan32/DuckOut/Krpc/example/callee/Kserver.cc \
+ /users/Yifan32/DuckOut/example/callee/Kserver.cc \
  /usr/include/stdc-predef.h /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -144,7 +144,7 @@ example/callee/CMakeFiles/server.dir/Kserver.cc.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /users/Yifan32/DuckOut/Krpc/example/callee/../user.pb.h \
+ /users/Yifan32/DuckOut/example/callee/../user.pb.h \
  /usr/include/c++/11/limits /usr/include/google/protobuf/port_def.inc \
  /usr/include/google/protobuf/port_undef.inc \
  /usr/include/google/protobuf/io/coded_stream.h /usr/include/assert.h \
@@ -273,10 +273,10 @@ example/callee/CMakeFiles/server.dir/Kserver.cc.o: \
  /usr/include/google/protobuf/message.h \
  /usr/include/google/protobuf/extension_set.h /usr/include/c++/11/cassert \
  /usr/include/google/protobuf/service.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpcapplication.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpcconfig.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpcchannel.h \
- /users/Yifan32/DuckOut/Krpc/src/include/zookeeperutil.h \
+ /users/Yifan32/DuckOut/src/include/Krpcapplication.h \
+ /users/Yifan32/DuckOut/src/include/Krpcconfig.h \
+ /users/Yifan32/DuckOut/src/include/Krpcchannel.h \
+ /users/Yifan32/DuckOut/src/include/zookeeperutil.h \
  /usr/include/semaphore.h /usr/include/x86_64-linux-gnu/bits/semaphore.h \
  /usr/include/zookeeper/zookeeper.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
@@ -299,8 +299,8 @@ example/callee/CMakeFiles/server.dir/Kserver.cc.o: \
  /usr/include/zookeeper/zookeeper_version.h \
  /usr/include/zookeeper/recordio.h \
  /usr/include/zookeeper/zookeeper.jute.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpccontroller.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpcprovider.h \
+ /users/Yifan32/DuckOut/src/include/Krpccontroller.h \
+ /users/Yifan32/DuckOut/src/include/Krpcprovider.h \
  /usr/include/muduo/net/TcpServer.h /usr/include/muduo/base/Atomic.h \
  /usr/include/muduo/base/noncopyable.h /usr/include/muduo/base/Types.h \
  /usr/include/muduo/net/TcpConnection.h \

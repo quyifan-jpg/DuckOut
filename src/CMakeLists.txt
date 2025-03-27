@@ -2,6 +2,10 @@
 #这样就可以保证CMake 的某些操作可能需要使用绝对路径，尤其是跨目录的构建场景。绝对路径可以避免相对路径带来的混淆和潜在问题。
 #动态调整目录结构：如果项目目录层次较深，或者使用子模块或外部依赖，绝对路径可以方便地定位正确的文件，而不用担心路径拼接或依赖 CMake 的当前工作目录。
 
+# 添加调试符号，确保可以正确调试
+set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0")
+
 #示例：
 #get_filename_component(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR} ABSOLUTE)
 #file(GLOB_RECURSE SRC_FILES ${SRC_DIR}/*.cc)
@@ -21,4 +25,4 @@ target_link_libraries(krpc_core PUBLIC protobuf)
 target_include_directories(krpc_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 # 添加编译选项
-target_compile_options(krpc_core PRIVATE -std=c++11 -Wall)
+target_compile_options(krpc_core PRIVATE -std=c++11 -Wall -g)

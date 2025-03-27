@@ -1,7 +1,6 @@
 src/CMakeFiles/krpc_core.dir/Krpcchannel.cc.o: \
- /users/Yifan32/DuckOut/Krpc/src/Krpcchannel.cc \
- /usr/include/stdc-predef.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpcchannel.h \
+ /users/Yifan32/DuckOut/src/Krpcchannel.cc /usr/include/stdc-predef.h \
+ /users/Yifan32/DuckOut/src/include/Krpcchannel.h \
  /usr/include/google/protobuf/service.h /usr/include/c++/11/string \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -229,7 +228,7 @@ src/CMakeFiles/krpc_core.dir/Krpcchannel.cc.o: \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /users/Yifan32/DuckOut/Krpc/src/include/zookeeperutil.h \
+ /users/Yifan32/DuckOut/src/include/zookeeperutil.h \
  /usr/include/semaphore.h /usr/include/x86_64-linux-gnu/bits/semaphore.h \
  /usr/include/zookeeper/zookeeper.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
@@ -252,8 +251,7 @@ src/CMakeFiles/krpc_core.dir/Krpcchannel.cc.o: \
  /usr/include/zookeeper/zookeeper_version.h \
  /usr/include/zookeeper/recordio.h \
  /usr/include/zookeeper/zookeeper.jute.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpcheader.pb.h \
- /usr/include/c++/11/limits \
+ /users/Yifan32/DuckOut/src/Krpcheader.pb.h /usr/include/c++/11/limits \
  /usr/include/google/protobuf/io/coded_stream.h \
  /usr/include/c++/11/atomic /usr/include/c++/11/climits \
  /usr/include/c++/11/cstring /usr/include/google/protobuf/stubs/logging.h \
@@ -303,15 +301,15 @@ src/CMakeFiles/krpc_core.dir/Krpcchannel.cc.o: \
  /usr/include/google/protobuf/stubs/stl_util.h \
  /usr/include/google/protobuf/message.h \
  /usr/include/google/protobuf/extension_set.h /usr/include/c++/11/cassert \
- /users/Yifan32/DuckOut/Krpc/src/include/zookeeperutil.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpcapplication.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpcconfig.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpcchannel.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpccontroller.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpccontroller.h \
+ /users/Yifan32/DuckOut/src/include/zookeeperutil.h \
+ /users/Yifan32/DuckOut/src/include/Krpcapplication.h \
+ /users/Yifan32/DuckOut/src/include/Krpcconfig.h \
+ /users/Yifan32/DuckOut/src/include/Krpcchannel.h \
+ /users/Yifan32/DuckOut/src/include/Krpccontroller.h \
+ /users/Yifan32/DuckOut/src/include/Krpccontroller.h \
  /usr/include/arpa/inet.h /usr/include/netinet/in.h \
  /usr/include/x86_64-linux-gnu/bits/in.h \
- /users/Yifan32/DuckOut/Krpc/src/include/KrpcLogger.h \
+ /users/Yifan32/DuckOut/src/include/KrpcLogger.h \
  /usr/include/glog/logging.h /usr/include/c++/11/sstream \
  /usr/include/c++/11/bits/sstream.tcc /usr/include/inttypes.h \
  /usr/include/gflags/gflags.h /usr/include/gflags/gflags_declare.h \

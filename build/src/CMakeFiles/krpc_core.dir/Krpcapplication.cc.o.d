@@ -1,8 +1,7 @@
 src/CMakeFiles/krpc_core.dir/Krpcapplication.cc.o: \
- /users/Yifan32/DuckOut/Krpc/src/Krpcapplication.cc \
- /usr/include/stdc-predef.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpcapplication.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpcconfig.h \
+ /users/Yifan32/DuckOut/src/Krpcapplication.cc /usr/include/stdc-predef.h \
+ /users/Yifan32/DuckOut/src/include/Krpcapplication.h \
+ /users/Yifan32/DuckOut/src/include/Krpcconfig.h \
  /usr/include/c++/11/unordered_map /usr/include/c++/11/type_traits \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -138,7 +137,7 @@ src/CMakeFiles/krpc_core.dir/Krpcapplication.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/11/bits/charconv.h \
  /usr/include/c++/11/bits/basic_string.tcc \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpcchannel.h \
+ /users/Yifan32/DuckOut/src/include/Krpcchannel.h \
  /usr/include/google/protobuf/service.h \
  /usr/include/google/protobuf/stubs/callback.h \
  /usr/include/google/protobuf/stubs/macros.h \
@@ -234,7 +233,7 @@ src/CMakeFiles/krpc_core.dir/Krpcapplication.cc.o: \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /users/Yifan32/DuckOut/Krpc/src/include/zookeeperutil.h \
+ /users/Yifan32/DuckOut/src/include/zookeeperutil.h \
  /usr/include/semaphore.h /usr/include/x86_64-linux-gnu/bits/semaphore.h \
  /usr/include/zookeeper/zookeeper.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
@@ -257,7 +256,7 @@ src/CMakeFiles/krpc_core.dir/Krpcapplication.cc.o: \
  /usr/include/zookeeper/zookeeper_version.h \
  /usr/include/zookeeper/recordio.h \
  /usr/include/zookeeper/zookeeper.jute.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpccontroller.h \
+ /users/Yifan32/DuckOut/src/include/Krpccontroller.h \
  /usr/include/c++/11/mutex /usr/include/c++/11/chrono \
  /usr/include/c++/11/ratio /usr/include/c++/11/limits \
  /usr/include/c++/11/ctime /usr/include/c++/11/bits/parse_numbers.h \

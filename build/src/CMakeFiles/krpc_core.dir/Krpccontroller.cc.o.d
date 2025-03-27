@@ -1,7 +1,6 @@
 src/CMakeFiles/krpc_core.dir/Krpccontroller.cc.o: \
- /users/Yifan32/DuckOut/Krpc/src/Krpccontroller.cc \
- /usr/include/stdc-predef.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpccontroller.h \
+ /users/Yifan32/DuckOut/src/Krpccontroller.cc /usr/include/stdc-predef.h \
+ /users/Yifan32/DuckOut/src/include/Krpccontroller.h \
  /usr/include/google/protobuf/service.h /usr/include/c++/11/string \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \

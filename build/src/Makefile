@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /users/Yifan32/DuckOut/Krpc
+CMAKE_SOURCE_DIR = /users/Yifan32/DuckOut
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /users/Yifan32/DuckOut/Krpc/build
+CMAKE_BINARY_DIR = /users/Yifan32/DuckOut/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /users/Yifan32/DuckOut/Krpc/build && $(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/Krpc/build/CMakeFiles /users/Yifan32/DuckOut/Krpc/build/src//CMakeFiles/progress.marks
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/Krpc/build/CMakeFiles 0
+	cd /users/Yifan32/DuckOut/build && $(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/build/CMakeFiles /users/Yifan32/DuckOut/build/src//CMakeFiles/progress.marks
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,22 +103,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /users/Yifan32/DuckOut/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/krpc_core.dir/rule:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/krpc_core.dir/rule
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/krpc_core.dir/rule
 .PHONY : src/CMakeFiles/krpc_core.dir/rule
 
 # Convenience name for target.
@@ -127,7 +127,7 @@ krpc_core: src/CMakeFiles/krpc_core.dir/rule
 
 # fast build rule for target.
 krpc_core/fast:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/build
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/build
 .PHONY : krpc_core/fast
 
 Krpcapplication.o: Krpcapplication.cc.o
@@ -135,7 +135,7 @@ Krpcapplication.o: Krpcapplication.cc.o
 
 # target to build an object file
 Krpcapplication.cc.o:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcapplication.cc.o
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcapplication.cc.o
 .PHONY : Krpcapplication.cc.o
 
 Krpcapplication.i: Krpcapplication.cc.i
@@ -143,7 +143,7 @@ Krpcapplication.i: Krpcapplication.cc.i
 
 # target to preprocess a source file
 Krpcapplication.cc.i:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcapplication.cc.i
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcapplication.cc.i
 .PHONY : Krpcapplication.cc.i
 
 Krpcapplication.s: Krpcapplication.cc.s
@@ -151,7 +151,7 @@ Krpcapplication.s: Krpcapplication.cc.s
 
 # target to generate assembly for a file
 Krpcapplication.cc.s:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcapplication.cc.s
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcapplication.cc.s
 .PHONY : Krpcapplication.cc.s
 
 Krpcchannel.o: Krpcchannel.cc.o
@@ -159,7 +159,7 @@ Krpcchannel.o: Krpcchannel.cc.o
 
 # target to build an object file
 Krpcchannel.cc.o:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcchannel.cc.o
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcchannel.cc.o
 .PHONY : Krpcchannel.cc.o
 
 Krpcchannel.i: Krpcchannel.cc.i
@@ -167,7 +167,7 @@ Krpcchannel.i: Krpcchannel.cc.i
 
 # target to preprocess a source file
 Krpcchannel.cc.i:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcchannel.cc.i
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcchannel.cc.i
 .PHONY : Krpcchannel.cc.i
 
 Krpcchannel.s: Krpcchannel.cc.s
@@ -175,7 +175,7 @@ Krpcchannel.s: Krpcchannel.cc.s
 
 # target to generate assembly for a file
 Krpcchannel.cc.s:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcchannel.cc.s
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcchannel.cc.s
 .PHONY : Krpcchannel.cc.s
 
 Krpcconfig.o: Krpcconfig.cc.o
@@ -183,7 +183,7 @@ Krpcconfig.o: Krpcconfig.cc.o
 
 # target to build an object file
 Krpcconfig.cc.o:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcconfig.cc.o
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcconfig.cc.o
 .PHONY : Krpcconfig.cc.o
 
 Krpcconfig.i: Krpcconfig.cc.i
@@ -191,7 +191,7 @@ Krpcconfig.i: Krpcconfig.cc.i
 
 # target to preprocess a source file
 Krpcconfig.cc.i:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcconfig.cc.i
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcconfig.cc.i
 .PHONY : Krpcconfig.cc.i
 
 Krpcconfig.s: Krpcconfig.cc.s
@@ -199,7 +199,7 @@ Krpcconfig.s: Krpcconfig.cc.s
 
 # target to generate assembly for a file
 Krpcconfig.cc.s:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcconfig.cc.s
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcconfig.cc.s
 .PHONY : Krpcconfig.cc.s
 
 Krpccontroller.o: Krpccontroller.cc.o
@@ -207,7 +207,7 @@ Krpccontroller.o: Krpccontroller.cc.o
 
 # target to build an object file
 Krpccontroller.cc.o:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpccontroller.cc.o
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpccontroller.cc.o
 .PHONY : Krpccontroller.cc.o
 
 Krpccontroller.i: Krpccontroller.cc.i
@@ -215,7 +215,7 @@ Krpccontroller.i: Krpccontroller.cc.i
 
 # target to preprocess a source file
 Krpccontroller.cc.i:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpccontroller.cc.i
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpccontroller.cc.i
 .PHONY : Krpccontroller.cc.i
 
 Krpccontroller.s: Krpccontroller.cc.s
@@ -223,7 +223,7 @@ Krpccontroller.s: Krpccontroller.cc.s
 
 # target to generate assembly for a file
 Krpccontroller.cc.s:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpccontroller.cc.s
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpccontroller.cc.s
 .PHONY : Krpccontroller.cc.s
 
 Krpcheader.pb.o: Krpcheader.pb.cc.o
@@ -231,7 +231,7 @@ Krpcheader.pb.o: Krpcheader.pb.cc.o
 
 # target to build an object file
 Krpcheader.pb.cc.o:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcheader.pb.cc.o
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcheader.pb.cc.o
 .PHONY : Krpcheader.pb.cc.o
 
 Krpcheader.pb.i: Krpcheader.pb.cc.i
@@ -239,7 +239,7 @@ Krpcheader.pb.i: Krpcheader.pb.cc.i
 
 # target to preprocess a source file
 Krpcheader.pb.cc.i:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcheader.pb.cc.i
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcheader.pb.cc.i
 .PHONY : Krpcheader.pb.cc.i
 
 Krpcheader.pb.s: Krpcheader.pb.cc.s
@@ -247,7 +247,7 @@ Krpcheader.pb.s: Krpcheader.pb.cc.s
 
 # target to generate assembly for a file
 Krpcheader.pb.cc.s:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcheader.pb.cc.s
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcheader.pb.cc.s
 .PHONY : Krpcheader.pb.cc.s
 
 Krpcprovider.o: Krpcprovider.cc.o
@@ -255,7 +255,7 @@ Krpcprovider.o: Krpcprovider.cc.o
 
 # target to build an object file
 Krpcprovider.cc.o:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcprovider.cc.o
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcprovider.cc.o
 .PHONY : Krpcprovider.cc.o
 
 Krpcprovider.i: Krpcprovider.cc.i
@@ -263,7 +263,7 @@ Krpcprovider.i: Krpcprovider.cc.i
 
 # target to preprocess a source file
 Krpcprovider.cc.i:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcprovider.cc.i
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcprovider.cc.i
 .PHONY : Krpcprovider.cc.i
 
 Krpcprovider.s: Krpcprovider.cc.s
@@ -271,7 +271,7 @@ Krpcprovider.s: Krpcprovider.cc.s
 
 # target to generate assembly for a file
 Krpcprovider.cc.s:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcprovider.cc.s
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/Krpcprovider.cc.s
 .PHONY : Krpcprovider.cc.s
 
 zookeeperutil.o: zookeeperutil.cc.o
@@ -279,7 +279,7 @@ zookeeperutil.o: zookeeperutil.cc.o
 
 # target to build an object file
 zookeeperutil.cc.o:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/zookeeperutil.cc.o
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/zookeeperutil.cc.o
 .PHONY : zookeeperutil.cc.o
 
 zookeeperutil.i: zookeeperutil.cc.i
@@ -287,7 +287,7 @@ zookeeperutil.i: zookeeperutil.cc.i
 
 # target to preprocess a source file
 zookeeperutil.cc.i:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/zookeeperutil.cc.i
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/zookeeperutil.cc.i
 .PHONY : zookeeperutil.cc.i
 
 zookeeperutil.s: zookeeperutil.cc.s
@@ -295,7 +295,7 @@ zookeeperutil.s: zookeeperutil.cc.s
 
 # target to generate assembly for a file
 zookeeperutil.cc.s:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/zookeeperutil.cc.s
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/zookeeperutil.cc.s
 .PHONY : zookeeperutil.cc.s
 
 # Help Target
@@ -339,6 +339,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /users/Yifan32/DuckOut/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

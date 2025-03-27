@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /users/Yifan32/DuckOut/Krpc
+CMAKE_SOURCE_DIR = /users/Yifan32/DuckOut
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /users/Yifan32/DuckOut/Krpc/build
+CMAKE_BINARY_DIR = /users/Yifan32/DuckOut/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /users/Yifan32/DuckOut/Krpc/build && $(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/Krpc/build/CMakeFiles /users/Yifan32/DuckOut/Krpc/build/example/caller//CMakeFiles/progress.marks
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/caller/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/Krpc/build/CMakeFiles 0
+	cd /users/Yifan32/DuckOut/build && $(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/build/CMakeFiles /users/Yifan32/DuckOut/build/example/caller//CMakeFiles/progress.marks
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/caller/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/caller/clean
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/caller/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,22 +103,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/caller/preinstall
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/caller/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/caller/preinstall
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/caller/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /users/Yifan32/DuckOut/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 example/caller/CMakeFiles/client.dir/rule:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/caller/CMakeFiles/client.dir/rule
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/caller/CMakeFiles/client.dir/rule
 .PHONY : example/caller/CMakeFiles/client.dir/rule
 
 # Convenience name for target.
@@ -127,7 +127,7 @@ client: example/caller/CMakeFiles/client.dir/rule
 
 # fast build rule for target.
 client/fast:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f example/caller/CMakeFiles/client.dir/build.make example/caller/CMakeFiles/client.dir/build
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f example/caller/CMakeFiles/client.dir/build.make example/caller/CMakeFiles/client.dir/build
 .PHONY : client/fast
 
 Kclient.o: Kclient.cc.o
@@ -135,7 +135,7 @@ Kclient.o: Kclient.cc.o
 
 # target to build an object file
 Kclient.cc.o:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f example/caller/CMakeFiles/client.dir/build.make example/caller/CMakeFiles/client.dir/Kclient.cc.o
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f example/caller/CMakeFiles/client.dir/build.make example/caller/CMakeFiles/client.dir/Kclient.cc.o
 .PHONY : Kclient.cc.o
 
 Kclient.i: Kclient.cc.i
@@ -143,7 +143,7 @@ Kclient.i: Kclient.cc.i
 
 # target to preprocess a source file
 Kclient.cc.i:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f example/caller/CMakeFiles/client.dir/build.make example/caller/CMakeFiles/client.dir/Kclient.cc.i
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f example/caller/CMakeFiles/client.dir/build.make example/caller/CMakeFiles/client.dir/Kclient.cc.i
 .PHONY : Kclient.cc.i
 
 Kclient.s: Kclient.cc.s
@@ -151,7 +151,7 @@ Kclient.s: Kclient.cc.s
 
 # target to generate assembly for a file
 Kclient.cc.s:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f example/caller/CMakeFiles/client.dir/build.make example/caller/CMakeFiles/client.dir/Kclient.cc.s
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f example/caller/CMakeFiles/client.dir/build.make example/caller/CMakeFiles/client.dir/Kclient.cc.s
 .PHONY : Kclient.cc.s
 
 __/user.pb.o: __/user.pb.cc.o
@@ -159,7 +159,7 @@ __/user.pb.o: __/user.pb.cc.o
 
 # target to build an object file
 __/user.pb.cc.o:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f example/caller/CMakeFiles/client.dir/build.make example/caller/CMakeFiles/client.dir/__/user.pb.cc.o
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f example/caller/CMakeFiles/client.dir/build.make example/caller/CMakeFiles/client.dir/__/user.pb.cc.o
 .PHONY : __/user.pb.cc.o
 
 __/user.pb.i: __/user.pb.cc.i
@@ -167,7 +167,7 @@ __/user.pb.i: __/user.pb.cc.i
 
 # target to preprocess a source file
 __/user.pb.cc.i:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f example/caller/CMakeFiles/client.dir/build.make example/caller/CMakeFiles/client.dir/__/user.pb.cc.i
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f example/caller/CMakeFiles/client.dir/build.make example/caller/CMakeFiles/client.dir/__/user.pb.cc.i
 .PHONY : __/user.pb.cc.i
 
 __/user.pb.s: __/user.pb.cc.s
@@ -175,7 +175,7 @@ __/user.pb.s: __/user.pb.cc.s
 
 # target to generate assembly for a file
 __/user.pb.cc.s:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(MAKE) $(MAKESILENT) -f example/caller/CMakeFiles/client.dir/build.make example/caller/CMakeFiles/client.dir/__/user.pb.cc.s
+	cd /users/Yifan32/DuckOut/build && $(MAKE) $(MAKESILENT) -f example/caller/CMakeFiles/client.dir/build.make example/caller/CMakeFiles/client.dir/__/user.pb.cc.s
 .PHONY : __/user.pb.cc.s
 
 # Help Target
@@ -204,6 +204,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /users/Yifan32/DuckOut/Krpc/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /users/Yifan32/DuckOut/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

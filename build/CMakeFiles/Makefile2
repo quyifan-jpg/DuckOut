@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /users/Yifan32/DuckOut/Krpc
+CMAKE_SOURCE_DIR = /users/Yifan32/DuckOut
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /users/Yifan32/DuckOut/Krpc/build
+CMAKE_BINARY_DIR = /users/Yifan32/DuckOut/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -147,14 +147,14 @@ src/clean: src/CMakeFiles/krpc_core.dir/clean
 src/CMakeFiles/krpc_core.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/krpc_core.dir/build.make src/CMakeFiles/krpc_core.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/users/Yifan32/DuckOut/Krpc/build/CMakeFiles --progress-num=4,5,6,7,8,9,10,11 "Built target krpc_core"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/users/Yifan32/DuckOut/build/CMakeFiles --progress-num=4,5,6,7,8,9,10,11 "Built target krpc_core"
 .PHONY : src/CMakeFiles/krpc_core.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/krpc_core.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/Krpc/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/krpc_core.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/Krpc/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/krpc_core.dir/rule
 
 # Convenience name for target.
@@ -173,14 +173,14 @@ src/CMakeFiles/krpc_core.dir/clean:
 example/callee/CMakeFiles/server.dir/all: src/CMakeFiles/krpc_core.dir/all
 	$(MAKE) $(MAKESILENT) -f example/callee/CMakeFiles/server.dir/build.make example/callee/CMakeFiles/server.dir/depend
 	$(MAKE) $(MAKESILENT) -f example/callee/CMakeFiles/server.dir/build.make example/callee/CMakeFiles/server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/users/Yifan32/DuckOut/Krpc/build/CMakeFiles --progress-num=12,13,14 "Built target server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/users/Yifan32/DuckOut/build/CMakeFiles --progress-num=12,13,14 "Built target server"
 .PHONY : example/callee/CMakeFiles/server.dir/all
 
 # Build rule for subdir invocation for target.
 example/callee/CMakeFiles/server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/Krpc/build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/build/CMakeFiles 11
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/callee/CMakeFiles/server.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/Krpc/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/build/CMakeFiles 0
 .PHONY : example/callee/CMakeFiles/server.dir/rule
 
 # Convenience name for target.
@@ -199,14 +199,14 @@ example/callee/CMakeFiles/server.dir/clean:
 example/caller/CMakeFiles/client.dir/all: src/CMakeFiles/krpc_core.dir/all
 	$(MAKE) $(MAKESILENT) -f example/caller/CMakeFiles/client.dir/build.make example/caller/CMakeFiles/client.dir/depend
 	$(MAKE) $(MAKESILENT) -f example/caller/CMakeFiles/client.dir/build.make example/caller/CMakeFiles/client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/users/Yifan32/DuckOut/Krpc/build/CMakeFiles --progress-num=1,2,3 "Built target client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/users/Yifan32/DuckOut/build/CMakeFiles --progress-num=1,2,3 "Built target client"
 .PHONY : example/caller/CMakeFiles/client.dir/all
 
 # Build rule for subdir invocation for target.
 example/caller/CMakeFiles/client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/Krpc/build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/build/CMakeFiles 11
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example/caller/CMakeFiles/client.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/Krpc/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/Yifan32/DuckOut/build/CMakeFiles 0
 .PHONY : example/caller/CMakeFiles/client.dir/rule
 
 # Convenience name for target.

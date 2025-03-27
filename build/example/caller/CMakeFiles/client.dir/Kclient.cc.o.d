@@ -1,8 +1,8 @@
 example/caller/CMakeFiles/client.dir/Kclient.cc.o: \
- /users/Yifan32/DuckOut/Krpc/example/caller/Kclient.cc \
+ /users/Yifan32/DuckOut/example/caller/Kclient.cc \
  /usr/include/stdc-predef.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpcapplication.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpcconfig.h \
+ /users/Yifan32/DuckOut/src/include/Krpcapplication.h \
+ /users/Yifan32/DuckOut/src/include/Krpcconfig.h \
  /usr/include/c++/11/unordered_map /usr/include/c++/11/type_traits \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -138,7 +138,7 @@ example/caller/CMakeFiles/client.dir/Kclient.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/11/bits/charconv.h \
  /usr/include/c++/11/bits/basic_string.tcc \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpcchannel.h \
+ /users/Yifan32/DuckOut/src/include/Krpcchannel.h \
  /usr/include/google/protobuf/service.h \
  /usr/include/google/protobuf/stubs/callback.h \
  /usr/include/google/protobuf/stubs/macros.h \
@@ -234,7 +234,7 @@ example/caller/CMakeFiles/client.dir/Kclient.cc.o: \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /users/Yifan32/DuckOut/Krpc/src/include/zookeeperutil.h \
+ /users/Yifan32/DuckOut/src/include/zookeeperutil.h \
  /usr/include/semaphore.h /usr/include/x86_64-linux-gnu/bits/semaphore.h \
  /usr/include/zookeeper/zookeeper.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
@@ -257,13 +257,13 @@ example/caller/CMakeFiles/client.dir/Kclient.cc.o: \
  /usr/include/zookeeper/zookeeper_version.h \
  /usr/include/zookeeper/recordio.h \
  /usr/include/zookeeper/zookeeper.jute.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpccontroller.h \
+ /users/Yifan32/DuckOut/src/include/Krpccontroller.h \
  /usr/include/c++/11/mutex /usr/include/c++/11/chrono \
  /usr/include/c++/11/ratio /usr/include/c++/11/limits \
  /usr/include/c++/11/ctime /usr/include/c++/11/bits/parse_numbers.h \
  /usr/include/c++/11/bits/std_mutex.h \
  /usr/include/c++/11/bits/unique_lock.h \
- /users/Yifan32/DuckOut/Krpc/example/caller/../user.pb.h \
+ /users/Yifan32/DuckOut/example/caller/../user.pb.h \
  /usr/include/google/protobuf/io/coded_stream.h \
  /usr/include/c++/11/atomic /usr/include/c++/11/climits \
  /usr/include/c++/11/cstring /usr/include/google/protobuf/stubs/logging.h \
@@ -305,10 +305,10 @@ example/caller/CMakeFiles/client.dir/Kclient.cc.o: \
  /usr/include/google/protobuf/stubs/stl_util.h \
  /usr/include/google/protobuf/message.h \
  /usr/include/google/protobuf/extension_set.h /usr/include/c++/11/cassert \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpccontroller.h \
+ /users/Yifan32/DuckOut/src/include/Krpccontroller.h \
  /usr/include/c++/11/thread /usr/include/c++/11/bits/std_thread.h \
  /usr/include/c++/11/bits/this_thread_sleep.h \
- /users/Yifan32/DuckOut/Krpc/src/include/KrpcLogger.h \
+ /users/Yifan32/DuckOut/src/include/KrpcLogger.h \
  /usr/include/glog/logging.h /usr/include/c++/11/sstream \
  /usr/include/c++/11/bits/sstream.tcc /usr/include/inttypes.h \
  /usr/include/gflags/gflags.h /usr/include/gflags/gflags_declare.h \

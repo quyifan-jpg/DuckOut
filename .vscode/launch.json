@@ -1,0 +1,73 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Server",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/server",
+            "args": ["-i", "${workspaceFolder}/bin/test.conf"],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}/bin",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set a breakpoint at main",
+                    "text": "break main",
+                    "ignoreFailures": false
+                }
+            ],
+            "preLaunchTask": "build-project",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "sourceFileMap": {
+                "/build/glibc-SzIz7B": "/usr/src/glibc"
+            }
+        },
+        {
+            "name": "Run Client",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/client",
+            "args": ["-i", "${workspaceFolder}/bin/test.conf"],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}/bin",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set a breakpoint at main",
+                    "text": "break main",
+                    "ignoreFailures": false
+                }
+            ],
+            "preLaunchTask": "build-project",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "sourceFileMap": {
+                "/build/glibc-SzIz7B": "/usr/src/glibc"
+            }
+        }
+    ]
+} 

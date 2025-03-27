@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package calculator;
+
+// 加法服务定义
+service Calculator {
+  // 实现一个加法RPC
+  rpc Add (AddRequest) returns (AddResponse) {}
+}
+
+// 加法请求消息
+message AddRequest {
+  int32 a = 1;  // 第一个加数
+  int32 b = 2;  // 第二个加数
+}
+
+// 加法响应消息
+message AddResponse {
+  int32 result = 1;  // 加法的结果
+} 

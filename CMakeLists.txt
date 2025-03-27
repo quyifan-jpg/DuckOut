@@ -6,6 +6,14 @@ project(Krpc)
 set(CMAKE_CXX_STANDARD 11)#在这里我设置了11，代表使用c++11标准
 set(CMAKE_CXX_STANDARD_REQUIRED True)#CMAKE_CXX_STANDARD_REQUIRED表示强制使用指定的标准
 
+# 设置构建类型为Debug
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Debug)
+endif()
+
+# 添加调试标志
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0")
+
 #设置头文件目录，供所有子项目使用
 #include_directories(${CMAKE_SOURCE_DIR}/src/include) #其中CMAKE_SOURCE_DIR表示当前目录
 

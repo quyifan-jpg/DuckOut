@@ -1,7 +1,6 @@
 src/CMakeFiles/krpc_core.dir/zookeeperutil.cc.o: \
- /users/Yifan32/DuckOut/Krpc/src/zookeeperutil.cc \
- /usr/include/stdc-predef.h \
- /users/Yifan32/DuckOut/Krpc/src/include/zookeeperutil.h \
+ /users/Yifan32/DuckOut/src/zookeeperutil.cc /usr/include/stdc-predef.h \
+ /users/Yifan32/DuckOut/src/include/zookeeperutil.h \
  /usr/include/semaphore.h /usr/include/features.h \
  /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -150,8 +149,8 @@ src/CMakeFiles/krpc_core.dir/zookeeperutil.cc.o: \
  /usr/include/c++/11/bits/functional_hash.h \
  /usr/include/c++/11/bits/hash_bytes.h \
  /usr/include/c++/11/bits/basic_string.tcc \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpcapplication.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpcconfig.h \
+ /users/Yifan32/DuckOut/src/include/Krpcapplication.h \
+ /users/Yifan32/DuckOut/src/include/Krpcconfig.h \
  /usr/include/c++/11/unordered_map \
  /usr/include/c++/11/ext/aligned_buffer.h \
  /usr/include/c++/11/bits/hashtable.h \
@@ -162,7 +161,7 @@ src/CMakeFiles/krpc_core.dir/zookeeperutil.cc.o: \
  /usr/include/c++/11/bits/enable_special_members.h \
  /usr/include/c++/11/bits/unordered_map.h \
  /usr/include/c++/11/bits/erase_if.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpcchannel.h \
+ /users/Yifan32/DuckOut/src/include/Krpcchannel.h \
  /usr/include/google/protobuf/service.h \
  /usr/include/google/protobuf/stubs/callback.h \
  /usr/include/google/protobuf/stubs/macros.h \
@@ -257,14 +256,14 @@ src/CMakeFiles/krpc_core.dir/zookeeperutil.cc.o: \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /users/Yifan32/DuckOut/Krpc/src/include/zookeeperutil.h \
- /users/Yifan32/DuckOut/Krpc/src/include/Krpccontroller.h \
+ /users/Yifan32/DuckOut/src/include/zookeeperutil.h \
+ /users/Yifan32/DuckOut/src/include/Krpccontroller.h \
  /usr/include/c++/11/mutex /usr/include/c++/11/chrono \
  /usr/include/c++/11/ratio /usr/include/c++/11/limits \
  /usr/include/c++/11/ctime /usr/include/c++/11/bits/parse_numbers.h \
  /usr/include/c++/11/bits/std_mutex.h \
  /usr/include/c++/11/bits/unique_lock.h \
- /users/Yifan32/DuckOut/Krpc/src/include/KrpcLogger.h \
+ /users/Yifan32/DuckOut/src/include/KrpcLogger.h \
  /usr/include/glog/logging.h /usr/include/c++/11/sstream \
  /usr/include/c++/11/bits/sstream.tcc /usr/include/inttypes.h \
  /usr/include/gflags/gflags.h /usr/include/gflags/gflags_declare.h \

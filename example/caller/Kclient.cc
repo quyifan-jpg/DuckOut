@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
     // 创建日志对象
     KrpcLogger logger("MyRPC");
 
-    const int thread_count = 10;       // 并发线程数
+    const int thread_count = 1;       // 并发线程数
     const int requests_per_thread = 1; // 每个线程发送的请求数
 
     std::vector<std::thread> threads;  // 存储线程对象的容器

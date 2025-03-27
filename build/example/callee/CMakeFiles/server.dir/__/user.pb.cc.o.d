@@ -1,7 +1,6 @@
 example/callee/CMakeFiles/server.dir/__/user.pb.cc.o: \
- /users/Yifan32/DuckOut/Krpc/example/user.pb.cc \
- /usr/include/stdc-predef.h /users/Yifan32/DuckOut/Krpc/example/user.pb.h \
- /usr/include/c++/11/limits \
+ /users/Yifan32/DuckOut/example/user.pb.cc /usr/include/stdc-predef.h \
+ /users/Yifan32/DuckOut/example/user.pb.h /usr/include/c++/11/limits \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \

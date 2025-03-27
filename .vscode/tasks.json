@@ -1,0 +1,51 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-project",
+            "type": "shell",
+            "command": "cd ${workspaceFolder}/build && cmake -DCMAKE_BUILD_TYPE=Debug .. && make -j${nproc}",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "clean-build",
+            "type": "shell",
+            "command": "cd ${workspaceFolder}/build && make clean && cmake -DCMAKE_BUILD_TYPE=Debug .. && make -j${nproc}",
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "generate-protobuf",
+            "type": "shell",
+            "command": "cd ${workspaceFolder}/example && protoc --cpp_out=. user.proto && cd ${workspaceFolder}/src && protoc --cpp_out=. Krpcheader.proto",
+            "group": "build",
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        }
+    ]
+} 
