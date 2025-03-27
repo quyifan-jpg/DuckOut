@@ -1,0 +1,13 @@
+/users/Yifan32/DuckOut/Krpc/build/CMakeFiles/edit_cache.dir
+/users/Yifan32/DuckOut/Krpc/build/CMakeFiles/rebuild_cache.dir
+/users/Yifan32/DuckOut/Krpc/build/src/CMakeFiles/krpc_core.dir
+/users/Yifan32/DuckOut/Krpc/build/src/CMakeFiles/edit_cache.dir
+/users/Yifan32/DuckOut/Krpc/build/src/CMakeFiles/rebuild_cache.dir
+/users/Yifan32/DuckOut/Krpc/build/example/CMakeFiles/edit_cache.dir
+/users/Yifan32/DuckOut/Krpc/build/example/CMakeFiles/rebuild_cache.dir
+/users/Yifan32/DuckOut/Krpc/build/example/callee/CMakeFiles/server.dir
+/users/Yifan32/DuckOut/Krpc/build/example/callee/CMakeFiles/edit_cache.dir
+/users/Yifan32/DuckOut/Krpc/build/example/callee/CMakeFiles/rebuild_cache.dir
+/users/Yifan32/DuckOut/Krpc/build/example/caller/CMakeFiles/client.dir
+/users/Yifan32/DuckOut/Krpc/build/example/caller/CMakeFiles/edit_cache.dir
+/users/Yifan32/DuckOut/Krpc/build/example/caller/CMakeFiles/rebuild_cache.dir
