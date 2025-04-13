@@ -1,12 +1,5 @@
 {
-    "name": "My Dev Container with Ubuntu 22.04",
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
-    "features": {
-      "ghcr.io/devcontainers/features/common-utils:1": {},
-      "ghcr.io/devcontainers/features/gcc:1": {},
-      "ghcr.io/devcontainers/features/cmake:1": {},
-      "ghcr.io/devcontainers/features/protobuf:1": {}
-    },
-    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y unzip libboost-all-dev libgoogle-glog-dev libgflags-dev zookeeperd libzookeeper-mt-dev"
-  }
-  
+  "name": "22.04 Dev",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y build-essential cmake protobuf-compiler libprotobuf-dev unzip git"
+}
