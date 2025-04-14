@@ -1,5 +1,0 @@
-/users/Yifan32/DuckOut/src/test/build/CMakeFiles/generate_protos.dir
-/users/Yifan32/DuckOut/src/test/build/CMakeFiles/calculator_server.dir
-/users/Yifan32/DuckOut/src/test/build/CMakeFiles/calculator_client.dir
-/users/Yifan32/DuckOut/src/test/build/CMakeFiles/edit_cache.dir
-/users/Yifan32/DuckOut/src/test/build/CMakeFiles/rebuild_cache.dir

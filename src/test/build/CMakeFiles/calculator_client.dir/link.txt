@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/calculator_client.dir/calculator_client.cpp.o CMakeFiles/calculator_client.dir/add_simple.pb.cc.o CMakeFiles/calculator_client.dir/add_simple.grpc.pb.cc.o -o calculator_client   -L/usr/local/lib  -Wl,-rpath,/usr/local/lib /usr/lib/x86_64-linux-gnu/libprotobuf.so -lgrpc++ -lgrpc -lgpr 

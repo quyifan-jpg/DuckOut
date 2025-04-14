@@ -1,3 +1,0 @@
-# Hashes of file build rules.
-8c917916621b03b95044567b9f0068d6 CMakeFiles/generate_protos
-df817c3d1e0c4b4f3157b3396ae58c91 add_simple.pb.cc

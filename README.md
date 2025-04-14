@@ -1,3 +1,15 @@
+build instruction:
+
+mkdir build; cd build; cmake ..; make;
+
+sudo service zookeeper start
+
+cd bin; ./server -i ./test.conf 
+
+
+
+
+
 <!-- # Krpc
 
 > ⭐️ 本项目为[【代码随想录知识星球】](https://programmercarl.com/other/kstar.html) 教学项目   
