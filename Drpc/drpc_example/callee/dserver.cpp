@@ -1,30 +1,33 @@
-#include <stdio.h>
-#include <sys/socket.h>
-#include <arpa/inet.h>
-#include <string.h>
+#include "Drpcapplication.h"
+#include "DrpcServer.h"
+#include "../example_service.h"
+#include <iostream>
 
+int main(int argc, char **argv)
+{
+    // Initialize DrpcApplication
+    DrpcApplication::Init(argc, argv);
 
+    // 创建服务器实例
+    drpc::Server server;
 
-int main() {
-    // use af_Inet6
-    int sockfd = socket(AF_INET6, SOCK_STREAM, 0);
+    // 创建并注册Greeter服务
+    auto service = std::make_unique<example::GreeterServiceImpl>();
+    server.RegisterService(service.get());
 
-    struct sockaddr_in6 serv_addr;   
-    bzero(&serv_addr, sizeof(serv_addr));
-    serv_addr.sin6_family = AF_INET6;
-    serv_addr.sin6_addr = in6addr_any;
-    serv_addr.sin6_port = htons(8888);
+    // 启动服务器
+    if (!server.Start("0.0.0.0", 8888))
+    {
+        std::cerr << "Failed to start server" << std::endl;
+        return 1;
+    }
 
-    bind(sockfd, (sockaddr*)&serv_addr, sizeof(serv_addr));
+    std::cout << "Server started on port 8888" << std::endl;
 
-    listen(sockfd, SOMAXCONN);
-    
-    struct sockaddr_in clnt_addr;
-    socklen_t clnt_addr_len = sizeof(clnt_addr);
-    bzero(&clnt_addr, sizeof(clnt_addr));
+    // 运行服务器（阻塞）
+    server.Run();
 
-    int clnt_sockfd = accept(sockfd, (sockaddr*)&clnt_addr, &clnt_addr_len);
-
-    printf("new client fd %d! IP: %s Port: %d\n", clnt_sockfd, inet_ntoa(clnt_addr.sin_addr), ntohs(clnt_addr.sin_port));
+    // Clean up DrpcApplication before exiting
+    DrpcApplication::deleteInstance();
     return 0;
 }

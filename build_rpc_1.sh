@@ -1,6 +1,6 @@
 
 #!/bin/bash
-cd ..
+cd 
 set-x
 echo "开始安装RPC项目所需依赖..."
 

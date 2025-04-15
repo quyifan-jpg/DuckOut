@@ -1,28 +1,54 @@
-/*
- * @Author: your name
- * @Date: 2022-01-04 20:03:45
- * @LastEditTime: 2022-01-05 19:08:58
- * @LastEditors: your name
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: \30dayMakeCppServer\code\day01\client.cpp
- */
-#include <sys/socket.h>
-#include <arpa/inet.h>
-#include <string.h>
+#include "Drpcapplication.h"
+#include "DrpcChannel.h"
+#include "DrpcController.h"
+#include "../example_service.h"
+#include <iostream>
 
-int main() {
-    int sockfd = socket(AF_INET6, SOCK_STREAM, 0);
+int main(int argc, char **argv)
+{
+    // 初始化DrpcApplication
+    DrpcApplication::Init(argc, argv);
 
-    struct sockaddr_in6 serv_addr;
-    bzero(&serv_addr, sizeof(serv_addr));
-    serv_addr.sin6_family = AF_INET6;
-    serv_addr.sin6_addr = in6addr_any;
-    serv_addr.sin6_port = htons(8888);
+    // 创建Channel
+    drpc::TcpChannel channel;
+    if (!channel.Connect("localhost", 8888))
+    {
+        std::cerr << "Failed to connect to server" << std::endl;
+        return 1;
+    }
 
-    //bind(sockfd, (sockaddr*)&serv_addr, sizeof(serv_addr)); 客户端不进行bind操作
+    // 创建Controller
+    drpc::DrpcController controller;
 
-    connect(sockfd, (sockaddr*)&serv_addr, sizeof(serv_addr));    
-    send(sockfd, "hello", 5, 0);
+    // 准备请求
+    example::HelloRequest request;
+    request.name = "World";
 
+    // 准备接收响应
+    example::HelloResponse response;
+
+    // 获取方法描述符
+    example::GreeterService service;
+    auto method = service.GetMethodDescriptor("SayHello");
+
+    // 发起同步调用
+    bool success = channel.CallMethodSync(
+        method,
+        &controller,
+        &request,
+        &response);
+
+    if (success)
+    {
+        std::cout << "Response: " << response.greeting << std::endl;
+    }
+    else
+    {
+        std::cerr << "RPC failed" << std::endl;
+    }
+
+    // 清理
+    channel.Close();
+    DrpcApplication::deleteInstance();
     return 0;
 }
