@@ -87,6 +87,7 @@ void KrpcProvider::Run() {
 
 // 连接回调函数，处理客户端连接事件
 void KrpcProvider::OnConnection(const muduo::net::TcpConnectionPtr &conn) {
+    std::cout << "OnConnection" << std::endl;
     if (!conn->connected()) {
         // 如果连接关闭，则断开连接
         conn->shutdown();
