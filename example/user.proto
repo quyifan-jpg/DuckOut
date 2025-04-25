@@ -25,7 +25,17 @@ message RegisterResponse{
     ResultCode result=1;
     bool success=2;
 }
-service UserServiceRpc{
-    rpc Login(LoginRequest) returns(LoginResponse);
-    rpc Register(RegisterRequest) returns(RegisterResponse);
+service UserServiceRpc {
+  rpc Login(LoginRequest)   returns (LoginResponse);
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  rpc Add(AddRequest)       returns (AddResponse);
 }
+message AddRequest {
+  int32 a = 1;
+  int32 b = 2;
+}
+message AddResponse {
+  ResultCode result = 1;
+  int32 sum = 2;
+}
+

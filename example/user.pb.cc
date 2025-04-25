@@ -36,7 +36,44 @@ class RegisterResponseDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RegisterResponse> _instance;
 } _RegisterResponse_default_instance_;
+class AddRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<AddRequest> _instance;
+} _AddRequest_default_instance_;
+class AddResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<AddResponse> _instance;
+} _AddResponse_default_instance_;
 }  // namespace Kuser
+static void InitDefaultsscc_info_AddRequest_user_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::Kuser::_AddRequest_default_instance_;
+    new (ptr) ::Kuser::AddRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::Kuser::AddRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_AddRequest_user_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_AddRequest_user_2eproto}, {}};
+
+static void InitDefaultsscc_info_AddResponse_user_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::Kuser::_AddResponse_default_instance_;
+    new (ptr) ::Kuser::AddResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::Kuser::AddResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_AddResponse_user_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_AddResponse_user_2eproto}, {
+      &scc_info_ResultCode_user_2eproto.base,}};
+
 static void InitDefaultsscc_info_LoginRequest_user_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -109,7 +146,7 @@ static void InitDefaultsscc_info_ResultCode_user_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ResultCode_user_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_ResultCode_user_2eproto}, {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_user_2eproto[5];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_user_2eproto[7];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_user_2eproto = nullptr;
 static const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* file_level_service_descriptors_user_2eproto[1];
 
@@ -150,6 +187,20 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_user_2eproto::offsets[] PROTOB
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::Kuser::RegisterResponse, result_),
   PROTOBUF_FIELD_OFFSET(::Kuser::RegisterResponse, success_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::Kuser::AddRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::Kuser::AddRequest, a_),
+  PROTOBUF_FIELD_OFFSET(::Kuser::AddRequest, b_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::Kuser::AddResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::Kuser::AddResponse, result_),
+  PROTOBUF_FIELD_OFFSET(::Kuser::AddResponse, sum_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Kuser::ResultCode)},
@@ -157,6 +208,8 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 14, -1, sizeof(::Kuser::LoginResponse)},
   { 21, -1, sizeof(::Kuser::RegisterRequest)},
   { 29, -1, sizeof(::Kuser::RegisterResponse)},
+  { 36, -1, sizeof(::Kuser::AddRequest)},
+  { 43, -1, sizeof(::Kuser::AddResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -165,6 +218,8 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::Kuser::_LoginResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::Kuser::_RegisterRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::Kuser::_RegisterResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::Kuser::_AddRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::Kuser::_AddResponse_default_instance_),
 };
 
 const char descriptor_table_protodef_user_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -175,15 +230,20 @@ const char descriptor_table_protodef_user_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
   "e\022\017\n\007success\030\002 \001(\010\"8\n\017RegisterRequest\022\n\n"
   "\002id\030\001 \001(\r\022\014\n\004name\030\002 \001(\014\022\013\n\003pwd\030\003 \001(\014\"F\n\020"
   "RegisterResponse\022!\n\006result\030\001 \001(\0132\021.Kuser"
-  ".ResultCode\022\017\n\007success\030\002 \001(\0102\201\001\n\016UserSer"
-  "viceRpc\0222\n\005Login\022\023.Kuser.LoginRequest\032\024."
-  "Kuser.LoginResponse\022;\n\010Register\022\026.Kuser."
-  "RegisterRequest\032\027.Kuser.RegisterResponse"
-  "B\003\200\001\001b\006proto3"
+  ".ResultCode\022\017\n\007success\030\002 \001(\010\"\"\n\nAddReque"
+  "st\022\t\n\001a\030\001 \001(\005\022\t\n\001b\030\002 \001(\005\"=\n\013AddResponse\022"
+  "!\n\006result\030\001 \001(\0132\021.Kuser.ResultCode\022\013\n\003su"
+  "m\030\002 \001(\0052\257\001\n\016UserServiceRpc\0222\n\005Login\022\023.Ku"
+  "ser.LoginRequest\032\024.Kuser.LoginResponse\022;"
+  "\n\010Register\022\026.Kuser.RegisterRequest\032\027.Kus"
+  "er.RegisterResponse\022,\n\003Add\022\021.Kuser.AddRe"
+  "quest\032\022.Kuser.AddResponseB\003\200\001\001b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_user_2eproto_deps[1] = {
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_user_2eproto_sccs[5] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_user_2eproto_sccs[7] = {
+  &scc_info_AddRequest_user_2eproto.base,
+  &scc_info_AddResponse_user_2eproto.base,
   &scc_info_LoginRequest_user_2eproto.base,
   &scc_info_LoginResponse_user_2eproto.base,
   &scc_info_RegisterRequest_user_2eproto.base,
@@ -192,10 +252,10 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_use
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_user_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_user_2eproto = {
-  false, false, descriptor_table_protodef_user_2eproto, "user.proto", 453,
-  &descriptor_table_user_2eproto_once, descriptor_table_user_2eproto_sccs, descriptor_table_user_2eproto_deps, 5, 0,
+  false, false, descriptor_table_protodef_user_2eproto, "user.proto", 598,
+  &descriptor_table_user_2eproto_once, descriptor_table_user_2eproto_sccs, descriptor_table_user_2eproto_deps, 7, 0,
   schemas, file_default_instances, TableStruct_user_2eproto::offsets,
-  file_level_metadata_user_2eproto, 5, file_level_enum_descriptors_user_2eproto, file_level_service_descriptors_user_2eproto,
+  file_level_metadata_user_2eproto, 7, file_level_enum_descriptors_user_2eproto, file_level_service_descriptors_user_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -1426,6 +1486,484 @@ void RegisterResponse::InternalSwap(RegisterResponse* other) {
 
 // ===================================================================
 
+void AddRequest::InitAsDefaultInstance() {
+}
+class AddRequest::_Internal {
+ public:
+};
+
+AddRequest::AddRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:Kuser.AddRequest)
+}
+AddRequest::AddRequest(const AddRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&a_, &from.a_,
+    static_cast<size_t>(reinterpret_cast<char*>(&b_) -
+    reinterpret_cast<char*>(&a_)) + sizeof(b_));
+  // @@protoc_insertion_point(copy_constructor:Kuser.AddRequest)
+}
+
+void AddRequest::SharedCtor() {
+  ::memset(&a_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&b_) -
+      reinterpret_cast<char*>(&a_)) + sizeof(b_));
+}
+
+AddRequest::~AddRequest() {
+  // @@protoc_insertion_point(destructor:Kuser.AddRequest)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void AddRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+}
+
+void AddRequest::ArenaDtor(void* object) {
+  AddRequest* _this = reinterpret_cast< AddRequest* >(object);
+  (void)_this;
+}
+void AddRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void AddRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const AddRequest& AddRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_AddRequest_user_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void AddRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:Kuser.AddRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&a_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&b_) -
+      reinterpret_cast<char*>(&a_)) + sizeof(b_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* AddRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // int32 a = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          a_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 b = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          b_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* AddRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:Kuser.AddRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 a = 1;
+  if (this->a() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_a(), target);
+  }
+
+  // int32 b = 2;
+  if (this->b() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_b(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:Kuser.AddRequest)
+  return target;
+}
+
+size_t AddRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:Kuser.AddRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 a = 1;
+  if (this->a() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_a());
+  }
+
+  // int32 b = 2;
+  if (this->b() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_b());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void AddRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:Kuser.AddRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const AddRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<AddRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Kuser.AddRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Kuser.AddRequest)
+    MergeFrom(*source);
+  }
+}
+
+void AddRequest::MergeFrom(const AddRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Kuser.AddRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.a() != 0) {
+    _internal_set_a(from._internal_a());
+  }
+  if (from.b() != 0) {
+    _internal_set_b(from._internal_b());
+  }
+}
+
+void AddRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:Kuser.AddRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void AddRequest::CopyFrom(const AddRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Kuser.AddRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool AddRequest::IsInitialized() const {
+  return true;
+}
+
+void AddRequest::InternalSwap(AddRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(AddRequest, b_)
+      + sizeof(AddRequest::b_)
+      - PROTOBUF_FIELD_OFFSET(AddRequest, a_)>(
+          reinterpret_cast<char*>(&a_),
+          reinterpret_cast<char*>(&other->a_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata AddRequest::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void AddResponse::InitAsDefaultInstance() {
+  ::Kuser::_AddResponse_default_instance_._instance.get_mutable()->result_ = const_cast< ::Kuser::ResultCode*>(
+      ::Kuser::ResultCode::internal_default_instance());
+}
+class AddResponse::_Internal {
+ public:
+  static const ::Kuser::ResultCode& result(const AddResponse* msg);
+};
+
+const ::Kuser::ResultCode&
+AddResponse::_Internal::result(const AddResponse* msg) {
+  return *msg->result_;
+}
+AddResponse::AddResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:Kuser.AddResponse)
+}
+AddResponse::AddResponse(const AddResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_result()) {
+    result_ = new ::Kuser::ResultCode(*from.result_);
+  } else {
+    result_ = nullptr;
+  }
+  sum_ = from.sum_;
+  // @@protoc_insertion_point(copy_constructor:Kuser.AddResponse)
+}
+
+void AddResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_AddResponse_user_2eproto.base);
+  ::memset(&result_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&sum_) -
+      reinterpret_cast<char*>(&result_)) + sizeof(sum_));
+}
+
+AddResponse::~AddResponse() {
+  // @@protoc_insertion_point(destructor:Kuser.AddResponse)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void AddResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  if (this != internal_default_instance()) delete result_;
+}
+
+void AddResponse::ArenaDtor(void* object) {
+  AddResponse* _this = reinterpret_cast< AddResponse* >(object);
+  (void)_this;
+}
+void AddResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void AddResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const AddResponse& AddResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_AddResponse_user_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void AddResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:Kuser.AddResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArena() == nullptr && result_ != nullptr) {
+    delete result_;
+  }
+  result_ = nullptr;
+  sum_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* AddResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // .Kuser.ResultCode result = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_result(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 sum = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          sum_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* AddResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:Kuser.AddResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .Kuser.ResultCode result = 1;
+  if (this->has_result()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::result(this), target, stream);
+  }
+
+  // int32 sum = 2;
+  if (this->sum() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_sum(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:Kuser.AddResponse)
+  return target;
+}
+
+size_t AddResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:Kuser.AddResponse)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .Kuser.ResultCode result = 1;
+  if (this->has_result()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *result_);
+  }
+
+  // int32 sum = 2;
+  if (this->sum() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_sum());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void AddResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:Kuser.AddResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const AddResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<AddResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Kuser.AddResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Kuser.AddResponse)
+    MergeFrom(*source);
+  }
+}
+
+void AddResponse::MergeFrom(const AddResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Kuser.AddResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.has_result()) {
+    _internal_mutable_result()->::Kuser::ResultCode::MergeFrom(from._internal_result());
+  }
+  if (from.sum() != 0) {
+    _internal_set_sum(from._internal_sum());
+  }
+}
+
+void AddResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:Kuser.AddResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void AddResponse::CopyFrom(const AddResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Kuser.AddResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool AddResponse::IsInitialized() const {
+  return true;
+}
+
+void AddResponse::InternalSwap(AddResponse* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(AddResponse, sum_)
+      + sizeof(AddResponse::sum_)
+      - PROTOBUF_FIELD_OFFSET(AddResponse, result_)>(
+          reinterpret_cast<char*>(&result_),
+          reinterpret_cast<char*>(&other->result_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata AddResponse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
 UserServiceRpc::~UserServiceRpc() {}
 
 const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* UserServiceRpc::descriptor() {
@@ -1453,6 +1991,14 @@ void UserServiceRpc::Register(::PROTOBUF_NAMESPACE_ID::RpcController* controller
   done->Run();
 }
 
+void UserServiceRpc::Add(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                         const ::Kuser::AddRequest*,
+                         ::Kuser::AddResponse*,
+                         ::google::protobuf::Closure* done) {
+  controller->SetFailed("Method Add() not implemented.");
+  done->Run();
+}
+
 void UserServiceRpc::CallMethod(const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method,
                              ::PROTOBUF_NAMESPACE_ID::RpcController* controller,
                              const ::PROTOBUF_NAMESPACE_ID::Message* request,
@@ -1476,6 +2022,14 @@ void UserServiceRpc::CallMethod(const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor*
                  response),
              done);
       break;
+    case 2:
+      Add(controller,
+             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::Kuser::AddRequest*>(
+                 request),
+             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::Kuser::AddResponse*>(
+                 response),
+             done);
+      break;
     default:
       GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
       break;
@@ -1490,6 +2044,8 @@ const ::PROTOBUF_NAMESPACE_ID::Message& UserServiceRpc::GetRequestPrototype(
       return ::Kuser::LoginRequest::default_instance();
     case 1:
       return ::Kuser::RegisterRequest::default_instance();
+    case 2:
+      return ::Kuser::AddRequest::default_instance();
     default:
       GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
       return *::PROTOBUF_NAMESPACE_ID::MessageFactory::generated_factory()
@@ -1505,6 +2061,8 @@ const ::PROTOBUF_NAMESPACE_ID::Message& UserServiceRpc::GetResponsePrototype(
       return ::Kuser::LoginResponse::default_instance();
     case 1:
       return ::Kuser::RegisterResponse::default_instance();
+    case 2:
+      return ::Kuser::AddResponse::default_instance();
     default:
       GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
       return *::PROTOBUF_NAMESPACE_ID::MessageFactory::generated_factory()
@@ -1537,6 +2095,13 @@ void UserServiceRpc_Stub::Register(::PROTOBUF_NAMESPACE_ID::RpcController* contr
   channel_->CallMethod(descriptor()->method(1),
                        controller, request, response, done);
 }
+void UserServiceRpc_Stub::Add(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                              const ::Kuser::AddRequest* request,
+                              ::Kuser::AddResponse* response,
+                              ::google::protobuf::Closure* done) {
+  channel_->CallMethod(descriptor()->method(2),
+                       controller, request, response, done);
+}
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace Kuser
@@ -1555,6 +2120,12 @@ template<> PROTOBUF_NOINLINE ::Kuser::RegisterRequest* Arena::CreateMaybeMessage
 }
 template<> PROTOBUF_NOINLINE ::Kuser::RegisterResponse* Arena::CreateMaybeMessage< ::Kuser::RegisterResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::Kuser::RegisterResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::Kuser::AddRequest* Arena::CreateMaybeMessage< ::Kuser::AddRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::Kuser::AddRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::Kuser::AddResponse* Arena::CreateMaybeMessage< ::Kuser::AddResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::Kuser::AddResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

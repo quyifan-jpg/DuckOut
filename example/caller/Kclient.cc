@@ -7,6 +7,39 @@
 #include <chrono>
 #include "KrpcLogger.h"
 
+void send_add_request(int thread_id,
+                      std::atomic<int>& success_count,
+                      std::atomic<int>& fail_count) {
+  // 用于 RPC 调用的 Stub
+  Kuser::UserServiceRpc_Stub stub(new KrpcChannel(false));
+
+  // 构造 AddRequest
+  Kuser::AddRequest request;
+  request.set_a(123);  // 你可以改成随机或不同值
+  request.set_b(456);
+
+  // 准备响应和控制器
+  Kuser::AddResponse response;
+  Krpccontroller controller;
+
+  // 发起 RPC 调用
+  stub.Add(&controller, &request, &response, nullptr);
+
+  // 检查结果
+  if (controller.Failed()) {
+    ++fail_count;
+  } else if (response.result().errcode() != 0) {
+    ++fail_count;
+  } else {
+    // 可选地校验 sum
+    if (response.sum() != 123 + 456) {
+      ++fail_count;
+    } else {
+      ++success_count;
+    }
+  }
+}
+
 // 发送 RPC 请求的函数，模拟客户端调用远程服务
 void send_request(int thread_id, std::atomic<int> &success_count, std::atomic<int> &fail_count) {
     // 创建一个 UserServiceRpc_Stub 对象，用于调用远程的 RPC 方法
@@ -39,45 +72,38 @@ void send_request(int thread_id, std::atomic<int> &success_count, std::atomic<in
     }
 }
 
-int main(int argc, char **argv) {
-    // 初始化 RPC 框架，解析命令行参数并加载配置文件
-    KrpcApplication::Init(argc, argv);
+int main(int argc, char** argv) {
+  KrpcApplication::Init(argc, argv);
+  KrpcLogger logger("AddBenchmark");
 
-    // 创建日志对象
-    KrpcLogger logger("MyRPC");
+  const int thread_count = 10;        // 并发线程数
+  const int requests_per_thread = 1000; // 每线程请求数
 
-    const int thread_count = 1;       // 并发线程数
-    const int requests_per_thread = 1; // 每个线程发送的请求数
+  std::vector<std::thread> threads;
+  std::atomic<int> success_count(0), fail_count(0);
 
-    std::vector<std::thread> threads;  // 存储线程对象的容器
-    std::atomic<int> success_count(0); // 成功请求的计数器
-    std::atomic<int> fail_count(0);    // 失败请求的计数器
+  auto start = std::chrono::high_resolution_clock::now();
 
-    auto start_time = std::chrono::high_resolution_clock::now();  // 记录测试开始时间
+  // 启动线程
+  for (int i = 0; i < thread_count; ++i) {
+    threads.emplace_back([i, &success_count, &fail_count, requests_per_thread] {
+      for (int j = 0; j < requests_per_thread; ++j) {
+        send_add_request(i, success_count, fail_count);
+      }
+    });
+  }
+  // 等待
+  for (auto& t : threads) t.join();
 
-    // 启动多线程进行并发测试
-    for (int i = 0; i < thread_count; i++) {
-        threads.emplace_back([argc, argv, i, &success_count, &fail_count, requests_per_thread]() {
-            for (int j = 0; j < requests_per_thread; j++) {
-                send_request(i, success_count, fail_count);  // 每个线程发送指定数量的请求
-            }
-        });
-    }
+  auto end = std::chrono::high_resolution_clock::now();
+  double elapsed = std::chrono::duration<double>(end - start).count();
+  int total = thread_count * requests_per_thread;
 
-    // 等待所有线程执行完毕
-    for (auto &t : threads) {
-        t.join();
-    }
+  LOG(INFO) << "Total requests: " << total;
+  LOG(INFO) << "Success: "        << success_count;
+  LOG(INFO) << "Failed: "         << fail_count;
+  LOG(INFO) << "Elapsed(sec): "   << elapsed;
+  LOG(INFO) << "QPS: "            << (total / elapsed);
 
-    auto end_time = std::chrono::high_resolution_clock::now();  // 记录测试结束时间
-    std::chrono::duration<double> elapsed = end_time - start_time;  // 计算测试耗时
-
-    // 输出统计结果
-    LOG(INFO) << "Total requests: " << thread_count * requests_per_thread;  // 总请求数
-    LOG(INFO) << "Success count: " << success_count;  // 成功请求数
-    LOG(INFO) << "Fail count: " << fail_count;  // 失败请求数
-    LOG(INFO) << "Elapsed time: " << elapsed.count() << " seconds";  // 测试耗时
-    LOG(INFO) << "QPS: " << (thread_count * requests_per_thread) / elapsed.count();  // 计算 QPS（每秒请求数）
-
-    return 0;
+  return 0;
 }

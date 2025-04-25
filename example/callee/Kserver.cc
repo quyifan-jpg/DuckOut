@@ -17,6 +17,25 @@ public:
         std::cout << "name:" << name << " pwd:" << pwd << std::endl;  
         return true;  // 模拟登录成功
     }
+    void Add(::google::protobuf::RpcController* controller,
+           const ::Kuser::AddRequest* request,
+           ::Kuser::AddResponse* response,
+           ::google::protobuf::Closure* done) override {
+    int32_t a = request->a();
+    int32_t b = request->b();
+    int32_t result = a + b;
+
+    // 填入 ResultCode
+    Kuser::ResultCode* code = response->mutable_result();
+    code->set_errcode(0);
+    code->set_errmsg("");
+
+    // 填入 sum
+    response->set_sum(result);
+
+    // 调用 done，框架会序列化并发送
+    done->Run();
+  }
 
     /*
     重写基类 UserServiceRpc 的虚函数，这些方法会被 RPC 框架直接调用。

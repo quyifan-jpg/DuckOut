@@ -48,7 +48,7 @@ struct TableStruct_user_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[5]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[7]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -56,6 +56,12 @@ struct TableStruct_user_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_user_2eproto;
 namespace Kuser {
+class AddRequest;
+class AddRequestDefaultTypeInternal;
+extern AddRequestDefaultTypeInternal _AddRequest_default_instance_;
+class AddResponse;
+class AddResponseDefaultTypeInternal;
+extern AddResponseDefaultTypeInternal _AddResponse_default_instance_;
 class LoginRequest;
 class LoginRequestDefaultTypeInternal;
 extern LoginRequestDefaultTypeInternal _LoginRequest_default_instance_;
@@ -73,6 +79,8 @@ class ResultCodeDefaultTypeInternal;
 extern ResultCodeDefaultTypeInternal _ResultCode_default_instance_;
 }  // namespace Kuser
 PROTOBUF_NAMESPACE_OPEN
+template<> ::Kuser::AddRequest* Arena::CreateMaybeMessage<::Kuser::AddRequest>(Arena*);
+template<> ::Kuser::AddResponse* Arena::CreateMaybeMessage<::Kuser::AddResponse>(Arena*);
 template<> ::Kuser::LoginRequest* Arena::CreateMaybeMessage<::Kuser::LoginRequest>(Arena*);
 template<> ::Kuser::LoginResponse* Arena::CreateMaybeMessage<::Kuser::LoginResponse>(Arena*);
 template<> ::Kuser::RegisterRequest* Arena::CreateMaybeMessage<::Kuser::RegisterRequest>(Arena*);
@@ -930,6 +938,311 @@ class RegisterResponse PROTOBUF_FINAL :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_user_2eproto;
 };
+// -------------------------------------------------------------------
+
+class AddRequest PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Kuser.AddRequest) */ {
+ public:
+  inline AddRequest() : AddRequest(nullptr) {};
+  virtual ~AddRequest();
+
+  AddRequest(const AddRequest& from);
+  AddRequest(AddRequest&& from) noexcept
+    : AddRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline AddRequest& operator=(const AddRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AddRequest& operator=(AddRequest&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const AddRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const AddRequest* internal_default_instance() {
+    return reinterpret_cast<const AddRequest*>(
+               &_AddRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(AddRequest& a, AddRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(AddRequest* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AddRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline AddRequest* New() const final {
+    return CreateMaybeMessage<AddRequest>(nullptr);
+  }
+
+  AddRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<AddRequest>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const AddRequest& from);
+  void MergeFrom(const AddRequest& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(AddRequest* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "Kuser.AddRequest";
+  }
+  protected:
+  explicit AddRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_user_2eproto);
+    return ::descriptor_table_user_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAFieldNumber = 1,
+    kBFieldNumber = 2,
+  };
+  // int32 a = 1;
+  void clear_a();
+  ::PROTOBUF_NAMESPACE_ID::int32 a() const;
+  void set_a(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_a() const;
+  void _internal_set_a(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 b = 2;
+  void clear_b();
+  ::PROTOBUF_NAMESPACE_ID::int32 b() const;
+  void set_b(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_b() const;
+  void _internal_set_b(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:Kuser.AddRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::int32 a_;
+  ::PROTOBUF_NAMESPACE_ID::int32 b_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_user_2eproto;
+};
+// -------------------------------------------------------------------
+
+class AddResponse PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Kuser.AddResponse) */ {
+ public:
+  inline AddResponse() : AddResponse(nullptr) {};
+  virtual ~AddResponse();
+
+  AddResponse(const AddResponse& from);
+  AddResponse(AddResponse&& from) noexcept
+    : AddResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline AddResponse& operator=(const AddResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AddResponse& operator=(AddResponse&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const AddResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const AddResponse* internal_default_instance() {
+    return reinterpret_cast<const AddResponse*>(
+               &_AddResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(AddResponse& a, AddResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(AddResponse* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AddResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline AddResponse* New() const final {
+    return CreateMaybeMessage<AddResponse>(nullptr);
+  }
+
+  AddResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<AddResponse>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const AddResponse& from);
+  void MergeFrom(const AddResponse& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(AddResponse* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "Kuser.AddResponse";
+  }
+  protected:
+  explicit AddResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_user_2eproto);
+    return ::descriptor_table_user_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kResultFieldNumber = 1,
+    kSumFieldNumber = 2,
+  };
+  // .Kuser.ResultCode result = 1;
+  bool has_result() const;
+  private:
+  bool _internal_has_result() const;
+  public:
+  void clear_result();
+  const ::Kuser::ResultCode& result() const;
+  ::Kuser::ResultCode* release_result();
+  ::Kuser::ResultCode* mutable_result();
+  void set_allocated_result(::Kuser::ResultCode* result);
+  private:
+  const ::Kuser::ResultCode& _internal_result() const;
+  ::Kuser::ResultCode* _internal_mutable_result();
+  public:
+  void unsafe_arena_set_allocated_result(
+      ::Kuser::ResultCode* result);
+  ::Kuser::ResultCode* unsafe_arena_release_result();
+
+  // int32 sum = 2;
+  void clear_sum();
+  ::PROTOBUF_NAMESPACE_ID::int32 sum() const;
+  void set_sum(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_sum() const;
+  void _internal_set_sum(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:Kuser.AddResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::Kuser::ResultCode* result_;
+  ::PROTOBUF_NAMESPACE_ID::int32 sum_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_user_2eproto;
+};
 // ===================================================================
 
 class UserServiceRpc_Stub;
@@ -952,6 +1265,10 @@ class UserServiceRpc : public ::PROTOBUF_NAMESPACE_ID::Service {
   virtual void Register(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
                        const ::Kuser::RegisterRequest* request,
                        ::Kuser::RegisterResponse* response,
+                       ::google::protobuf::Closure* done);
+  virtual void Add(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                       const ::Kuser::AddRequest* request,
+                       ::Kuser::AddResponse* response,
                        ::google::protobuf::Closure* done);
 
   // implements Service ----------------------------------------------
@@ -989,6 +1306,10 @@ class UserServiceRpc_Stub : public UserServiceRpc {
   void Register(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
                        const ::Kuser::RegisterRequest* request,
                        ::Kuser::RegisterResponse* response,
+                       ::google::protobuf::Closure* done);
+  void Add(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+                       const ::Kuser::AddRequest* request,
+                       ::Kuser::AddResponse* response,
                        ::google::protobuf::Closure* done);
  private:
   ::PROTOBUF_NAMESPACE_ID::RpcChannel* channel_;
@@ -1671,9 +1992,162 @@ inline void RegisterResponse::set_success(bool value) {
   // @@protoc_insertion_point(field_set:Kuser.RegisterResponse.success)
 }
 
+// -------------------------------------------------------------------
+
+// AddRequest
+
+// int32 a = 1;
+inline void AddRequest::clear_a() {
+  a_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 AddRequest::_internal_a() const {
+  return a_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 AddRequest::a() const {
+  // @@protoc_insertion_point(field_get:Kuser.AddRequest.a)
+  return _internal_a();
+}
+inline void AddRequest::_internal_set_a(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  a_ = value;
+}
+inline void AddRequest::set_a(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_a(value);
+  // @@protoc_insertion_point(field_set:Kuser.AddRequest.a)
+}
+
+// int32 b = 2;
+inline void AddRequest::clear_b() {
+  b_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 AddRequest::_internal_b() const {
+  return b_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 AddRequest::b() const {
+  // @@protoc_insertion_point(field_get:Kuser.AddRequest.b)
+  return _internal_b();
+}
+inline void AddRequest::_internal_set_b(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  b_ = value;
+}
+inline void AddRequest::set_b(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_b(value);
+  // @@protoc_insertion_point(field_set:Kuser.AddRequest.b)
+}
+
+// -------------------------------------------------------------------
+
+// AddResponse
+
+// .Kuser.ResultCode result = 1;
+inline bool AddResponse::_internal_has_result() const {
+  return this != internal_default_instance() && result_ != nullptr;
+}
+inline bool AddResponse::has_result() const {
+  return _internal_has_result();
+}
+inline void AddResponse::clear_result() {
+  if (GetArena() == nullptr && result_ != nullptr) {
+    delete result_;
+  }
+  result_ = nullptr;
+}
+inline const ::Kuser::ResultCode& AddResponse::_internal_result() const {
+  const ::Kuser::ResultCode* p = result_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::Kuser::ResultCode*>(
+      &::Kuser::_ResultCode_default_instance_);
+}
+inline const ::Kuser::ResultCode& AddResponse::result() const {
+  // @@protoc_insertion_point(field_get:Kuser.AddResponse.result)
+  return _internal_result();
+}
+inline void AddResponse::unsafe_arena_set_allocated_result(
+    ::Kuser::ResultCode* result) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(result_);
+  }
+  result_ = result;
+  if (result) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Kuser.AddResponse.result)
+}
+inline ::Kuser::ResultCode* AddResponse::release_result() {
+  auto temp = unsafe_arena_release_result();
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::Kuser::ResultCode* AddResponse::unsafe_arena_release_result() {
+  // @@protoc_insertion_point(field_release:Kuser.AddResponse.result)
+  
+  ::Kuser::ResultCode* temp = result_;
+  result_ = nullptr;
+  return temp;
+}
+inline ::Kuser::ResultCode* AddResponse::_internal_mutable_result() {
+  
+  if (result_ == nullptr) {
+    auto* p = CreateMaybeMessage<::Kuser::ResultCode>(GetArena());
+    result_ = p;
+  }
+  return result_;
+}
+inline ::Kuser::ResultCode* AddResponse::mutable_result() {
+  // @@protoc_insertion_point(field_mutable:Kuser.AddResponse.result)
+  return _internal_mutable_result();
+}
+inline void AddResponse::set_allocated_result(::Kuser::ResultCode* result) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete result_;
+  }
+  if (result) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(result);
+    if (message_arena != submessage_arena) {
+      result = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, result, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  result_ = result;
+  // @@protoc_insertion_point(field_set_allocated:Kuser.AddResponse.result)
+}
+
+// int32 sum = 2;
+inline void AddResponse::clear_sum() {
+  sum_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 AddResponse::_internal_sum() const {
+  return sum_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 AddResponse::sum() const {
+  // @@protoc_insertion_point(field_get:Kuser.AddResponse.sum)
+  return _internal_sum();
+}
+inline void AddResponse::_internal_set_sum(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  sum_ = value;
+}
+inline void AddResponse::set_sum(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_sum(value);
+  // @@protoc_insertion_point(field_set:Kuser.AddResponse.sum)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

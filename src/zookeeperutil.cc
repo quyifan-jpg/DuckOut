@@ -36,6 +36,13 @@ void ZkClient::Start() {
     std::string port = KrpcApplication::GetInstance().GetConfig().Load("zookeeperport");
     std::string connstr = host + ":" + port;  // 拼接连接字符串
 
+    // 设置ZooKeeper日志级别，禁用或减少内部日志输出
+    // ZOO_LOG_LEVEL_ERROR 只显示错误信息
+    // ZOO_LOG_LEVEL_WARN 显示警告和错误
+    // ZOO_LOG_LEVEL_INFO 显示信息、警告和错误（默认）
+    // ZOO_LOG_LEVEL_DEBUG 显示调试、信息、警告和错误
+    zoo_set_debug_level(ZOO_LOG_LEVEL_ERROR);  // 只显示错误日志，禁止信息日志
+
     /*
     zookeeper_mt：多线程版本
     ZooKeeper的API客户端程序提供了三个线程：
@@ -54,7 +61,7 @@ void ZkClient::Start() {
     // 等待连接成功
     std::unique_lock<std::mutex> lock(cv_mutex);
     cv.wait(lock, [] { return is_connected; });  // 阻塞等待，直到连接成功
-    LOG(INFO) << "zookeeper_init success";  // 记录日志，表示连接成功
+    // LOG(INFO) << "zookeeper_init success";  // 记录日志，表示连接成功
 }
 
 // 创建ZooKeeper节点
@@ -68,7 +75,7 @@ void ZkClient::Create(const char *path, const char *data, int datalen, int state
         // 创建指定的ZooKeeper节点
         flag = zoo_create(m_zhandle, path, data, datalen, &ZOO_OPEN_ACL_UNSAFE, state, path_buffer, bufferlen);
         if (flag == ZOK) {  // 创建成功
-            LOG(INFO) << "znode create success... path:" << path;
+            // LOG(INFO) << "znode create success... path:" << path;
         } else {  // 创建失败
             LOG(ERROR) << "znode create failed... path:" << path;
             exit(EXIT_FAILURE);  // 退出程序
@@ -81,13 +88,22 @@ std::string ZkClient::GetData(const char *path) {
     char buf[64];  // 用于存储节点数据
     int bufferlen = sizeof(buf);
 
-    // 获取指定节点的数据
+    // 首先检查节点是否存在
+    int exist_flag = zoo_exists(m_zhandle, path, 0, nullptr);
+    if (exist_flag == ZNONODE) {
+        LOG(ERROR) << "ZooKeeper node doesn't exist: " << path;
+        return "";  // 节点不存在，返回空字符串
+    } else if (exist_flag != ZOK) {
+        LOG(ERROR) << "Error checking if node exists: " << path << ", error code: " << exist_flag;
+        return "";  // 检查节点是否存在时出错，返回空字符串
+    }
+
+    // 节点存在，获取数据
     int flag = zoo_get(m_zhandle, path, 0, buf, &bufferlen, nullptr);
     if (flag != ZOK) {  // 获取失败
-        LOG(ERROR) << "zoo_get error";
+        LOG(ERROR) << "zoo_get error for path: " << path << ", error code: " << flag;
         return "";  // 返回空字符串
     } else {  // 获取成功
         return buf;  // 返回节点数据
     }
-    return "";  // 默认返回空字符串
 }

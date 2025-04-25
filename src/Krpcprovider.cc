@@ -50,15 +50,18 @@ void KrpcProvider::Run() {
     // 使用muduo网络库，创建地址对象
     muduo::net::InetAddress address(ip, port);
 
-    // 创建TcpServer对象
-    std::shared_ptr<muduo::net::TcpServer> server = std::make_shared<muduo::net::TcpServer>(&event_loop, address, "KrpcProvider");
+    // 设置muduo日志级别为ERROR，降低日志输出
+
+    
+    // 创建TcpServer对象，使用Option::kReusePort以便快速重启服务
+    std::shared_ptr<muduo::net::TcpServer> server = std::make_shared<muduo::net::TcpServer>(&event_loop, address, "KrpcProvider", muduo::net::TcpServer::Option::kReusePort);
 
     // 绑定连接回调和消息回调，分离网络连接业务和消息处理业务
     server->setConnectionCallback(std::bind(&KrpcProvider::OnConnection, this, std::placeholders::_1));
     server->setMessageCallback(std::bind(&KrpcProvider::OnMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-
+    
     // 设置muduo库的线程数量
-    server->setThreadNum(4);
+    server->setThreadNum(8);
 
     // 将当前RPC节点上要发布的服务全部注册到ZooKeeper上，让RPC客户端可以在ZooKeeper上发现服务
     ZkClient zkclient;
