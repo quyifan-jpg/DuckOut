@@ -15,9 +15,9 @@ file(GLOB SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.cc)
 # 获取 protobuf 的生成文件
 file(GLOB PROTO_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/*.pb.cc)
 
-# 查找UCX库
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(UCX REQUIRED ucx)
+# # 查找UCX库
+# find_package(PkgConfig REQUIRED)
+# pkg_check_modules(UCX REQUIRED ucx)
 
 #创建静态库或共享库
 add_library(krpc_core STATIC ${SRC_FILES} ${PROTO_SRCS})

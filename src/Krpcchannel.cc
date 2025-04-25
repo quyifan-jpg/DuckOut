@@ -11,7 +11,7 @@
 #include <sys/types.h>
 #include <arpa/inet.h>
 #include "KrpcLogger.h"
-#include "Communication.h"
+// #include "Communication.h"
 std::mutex g_data_mutx;  // 全局互斥锁，用于保护共享数据的线程安全
 
 // RPC调用的核心方法，负责将客户端的请求序列化并发送到服务端，同时接收服务端的响应
@@ -116,8 +116,8 @@ void KrpcChannel::CallMethod(const ::google::protobuf::MethodDescriptor *method,
 // 创建新的socket连接
 bool KrpcChannel::newConnect(const char *ip, uint16_t port) {
     // 创建socket
-    ucx_context_t ctx;
-    ucp_init_context(&ctx, "tcp");
+    // ucx_context_t ctx;
+    // ucp_init_context(&ctx, "tcp");
     int clientfd = socket(AF_INET, SOCK_STREAM, 0);
     if (-1 == clientfd) {
         char errtxt[512] = {0};
