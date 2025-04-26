@@ -7,5 +7,10 @@
     "sudo chmod 0440 /etc/sudoers.d/vscode-nopasswd",
     "sudo apt-get update",
     "sudo apt-get install -y build-essential cmake protobuf-compiler libprotobuf-dev unzip git"
-  ]
+  ],
+  "features": {
+    "ghcr.io/devcontainers/features/sshd:1": {
+        "version": "latest"
+    }
+}
 }
