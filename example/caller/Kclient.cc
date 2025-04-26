@@ -77,7 +77,7 @@ int main(int argc, char** argv) {
   KrpcLogger logger("AddBenchmark");
 
   const int thread_count = 10;        // 并发线程数
-  const int requests_per_thread = 1000; // 每线程请求数
+  const int requests_per_thread = 100; // 每线程请求数
 
   std::vector<std::thread> threads;
   std::atomic<int> success_count(0), fail_count(0);

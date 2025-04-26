@@ -9,7 +9,8 @@
 #include <thread>
 #include <netinet/in.h>
 #include <vector>
-
+#include <deque>
+#include <condition_variable>
 // 简单的线程池实现
 class ThreadPool
 {

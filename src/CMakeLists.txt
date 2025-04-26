@@ -23,13 +23,12 @@ file(GLOB PROTO_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/*.pb.cc)
 add_library(krpc_core STATIC ${SRC_FILES} ${PROTO_SRCS})
 
 #链接protobuf库和UCX库
-target_link_libraries(krpc_core PUBLIC protobuf ${UCX_LIBRARIES})
+target_link_libraries(krpc_core PUBLIC protobuf)
 
 #设置头文件的路径
 target_include_directories(krpc_core PUBLIC 
     ${CMAKE_CURRENT_SOURCE_DIR}/include
-    ${UCX_INCLUDE_DIRS}
 )
 
 # 添加编译选项
-target_compile_options(krpc_core PRIVATE -std=c++11 -Wall -g ${UCX_CFLAGS_OTHER})
+target_compile_options(krpc_core PRIVATE -std=c++14 -Wall -g )

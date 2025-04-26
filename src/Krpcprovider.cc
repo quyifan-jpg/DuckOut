@@ -2,7 +2,9 @@
 #include "Krpcapplication.h"
 #include "Krpcheader.pb.h"
 #include "KrpcLogger.h"
+#include "EpollServer.h"
 #include <iostream>
+#include <muduo/base/Logging.h>
 
 // 注册服务对象及其方法，以便服务端能够处理客户端的RPC请求
 void KrpcProvider::NotifyService(google::protobuf::Service *service) {
@@ -46,16 +48,18 @@ void KrpcProvider::Run() {
     // 读取配置文件中的RPC服务器IP和端口
     std::string ip = KrpcApplication::GetInstance().GetConfig().Load("rpcserverip");
     int port = atoi(KrpcApplication::GetInstance().GetConfig().Load("rpcserverport").c_str());
+    // EpollServer server2; // 使用自定义的EpollServer
 
     // 使用muduo网络库，创建地址对象
     muduo::net::InetAddress address(ip, port);
 
-    // 设置muduo日志级别为ERROR，降低日志输出
 
+    // 设置muduo日志级别为ERROR，降低日志输出
+    
     
     // 创建TcpServer对象，使用Option::kReusePort以便快速重启服务
     std::shared_ptr<muduo::net::TcpServer> server = std::make_shared<muduo::net::TcpServer>(&event_loop, address, "KrpcProvider", muduo::net::TcpServer::Option::kReusePort);
-
+    muduo::Logger::setLogLevel(muduo::Logger::LogLevel::ERROR);  // 设置日志级别为ERROR，减少日志输出
     // 绑定连接回调和消息回调，分离网络连接业务和消息处理业务
     server->setConnectionCallback(std::bind(&KrpcProvider::OnConnection, this, std::placeholders::_1));
     server->setMessageCallback(std::bind(&KrpcProvider::OnMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));

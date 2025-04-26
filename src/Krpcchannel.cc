@@ -42,7 +42,7 @@ void KrpcChannel::CallMethod(const ::google::protobuf::MethodDescriptor *method,
             LOG(ERROR) << "connect server error";  // 连接失败，记录错误日志
             return;
         } else {
-            LOG(INFO) << "connect server success";  // 连接成功，记录日志
+            // LOG(INFO) << "connect server success";  // 连接成功，记录日志
         }
     }  // endif
 
@@ -148,7 +148,7 @@ bool KrpcChannel::newConnect(const char *ip, uint16_t port) {
 // 从ZooKeeper查询服务地址
 std::string KrpcChannel::QueryServiceHost(ZkClient *zkclient, std::string service_name, std::string method_name, int &idx) {
     std::string method_path = "/" + service_name + "/" + method_name;  // 构造ZooKeeper路径
-    std::cout << "method_path: " << method_path << std::endl;
+    // std::cout << "method_path: " << method_path << std::endl;
 
     std::unique_lock<std::mutex> lock(g_data_mutx);  // 加锁，保证线程安全
     std::string host_data_1 = zkclient->GetData(method_path.c_str());  // 从ZooKeeper获取数据

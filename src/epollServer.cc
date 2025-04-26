@@ -1,4 +1,4 @@
-#include "epollServer.h"
+#include "EpollServer.h"
 #include "KrpcLogger.h"
 #include <cstring>
 #include <fcntl.h>
@@ -7,6 +7,9 @@
 #include <sys/socket.h>
 #include <unistd.h>
 #include <arpa/inet.h>
+#include <iostream> 
+#include <memory>
+#include <atomic>
 
 // 设置socket为非阻塞模式
 int setNonBlocking(int fd)

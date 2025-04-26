@@ -75,6 +75,8 @@
     "iomanip": "cpp",
     "scoped_allocator": "cpp",
     "shared_mutex": "cpp",
-    "valarray": "cpp"
+    "valarray": "cpp",
+    "ranges": "cpp",
+    "span": "cpp"
   }
 }

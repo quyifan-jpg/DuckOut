@@ -3,6 +3,14 @@
 #include<glog/logging.h>
 #include<string>
 //采用RAII的思想
+
+enum class LogLevel {
+    INFO = google::INFO,
+    WARNING = google::WARNING,
+    ERROR = google::ERROR,
+    FATAL = google::FATAL
+};
+
 class KrpcLogger
 {
 public:
@@ -12,6 +20,10 @@ public:
         google::InitGoogleLogging(argv0);
         FLAGS_colorlogtostderr=true;//启用彩色日志
         FLAGS_logtostderr=true;//默认输出标准错误
+      }
+      static void SetLogLevel(LogLevel level) {
+        google::SetStderrLogging(static_cast<int>(level));
+        currentLogLevel_ = level;
       }
       ~KrpcLogger(){
         google::ShutdownGoogleLogging();
@@ -34,6 +46,8 @@ public:
 private:
     KrpcLogger(const KrpcLogger&)=delete;
     KrpcLogger& operator=(const KrpcLogger&)=delete;
+    static LogLevel currentLogLevel_;
+
 };
 
 #endif
