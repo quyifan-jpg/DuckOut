@@ -24,7 +24,8 @@ public:
     int32_t a = request->a();
     int32_t b = request->b();
     int32_t result = a + b;
-
+    std::cout << result << std::endl;
+    usleep(1000 * 1000); // 模拟耗时操作
     // 填入 ResultCode
     Kuser::ResultCode* code = response->mutable_result();
     code->set_errcode(0);

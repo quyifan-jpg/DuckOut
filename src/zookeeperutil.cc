@@ -107,3 +107,57 @@ std::string ZkClient::GetData(const char *path) {
         return buf;  // 返回节点数据
     }
 }
+
+
+std::vector<std::string> ZkClient::GetChildren(const char *path) {
+    std::vector<std::string> children;
+    struct String_vector nodes;
+
+    int exist_flag = zoo_exists(m_zhandle, path, 0, nullptr);
+    if (exist_flag == ZNONODE) {
+        LOG(ERROR) << "ZooKeeper path doesn't exist: " << path;
+        return children;  // 路径不存在，返回空vector
+    } else if (exist_flag != ZOK) {
+        LOG(ERROR) << "Error checking if path exists: " << path << ", error code: " << exist_flag;
+        return children;  // 检查路径时出错，返回空vector
+    }
+    
+    // 获取子节点
+    int flag = zoo_get_children(m_zhandle, path, 0, &nodes);
+    if (flag != ZOK) {
+        LOG(ERROR) << "Error getting children for path: " << path << ", error code: " << flag;
+        return children;  // 获取子节点失败，返回空vector
+    }
+    
+    // 将子节点添加到返回结果中
+    for (int i = 0; i < nodes.count; ++i) {
+        children.push_back(nodes.data[i]);
+    }
+    
+    // 清理ZooKeeper分配的内存
+    deallocate_String_vector(&nodes);
+    
+    return children;
+}
+
+// 获取指定路径下所有子节点的数据
+std::vector<std::string> ZkClient::GetChildrenData(const char *path) {
+    std::vector<std::string> result;
+    
+    // 获取所有子节点
+    std::vector<std::string> children = GetChildren(path);
+    if (children.empty()) {
+        return result;  // 没有子节点，返回空vector
+    }
+    
+    // 获取每个子节点的数据
+    for (const std::string& child : children) {
+        std::string child_path = std::string(path) + "/" + child;
+        std::string data = GetData(child_path.c_str());
+        if (!data.empty()) {
+            result.push_back(data);
+        }
+    }
+    
+    return result;
+}

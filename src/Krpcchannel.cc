@@ -3,6 +3,7 @@
 #include "zookeeperutil.h"
 #include "Krpcapplication.h"
 #include "Krpccontroller.h"
+#include "KrpcLogger.h"
 
 #include "memory"
 #include <errno.h>
@@ -10,9 +11,64 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <arpa/inet.h>
-#include "KrpcLogger.h"
+#include <fcntl.h>
+#include <poll.h>
+#include <sys/time.h>
+#include <string.h>
+#include <iostream>
+#include <mutex>
+
+std::mutex g_data_mutx; // 全局互斥锁，用于保护共享数据的线程安全
+std::mutex KrpcChannel::s_load_balance_mutex;
+std::atomic<int> KrpcChannel::s_next_server_index(0);
+
+// 设置socket为非阻塞模式
+int KrpcChannel::setSocketNonBlocking(int fd)
+{
+    int flags = fcntl(fd, F_GETFL, 0);
+    if (flags == -1)
+    {
+        return -1;
+    }
+    return fcntl(fd, F_SETFL, flags | O_NONBLOCK);
+}
+
+// 带超时控制的发送操作
+int KrpcChannel::sendWithTimeout(int fd, const char *data, size_t len, int timeout_ms)
+{
+    struct pollfd pfd;
+    pfd.fd = fd;
+    pfd.events = POLLOUT;
+
+    // 等待socket可写
+    int ret = poll(&pfd, 1, timeout_ms);
+    if (ret <= 0)
+    {
+        return (ret == 0) ? -ETIMEDOUT : -1; // 超时或错误
+    }
+
+    // 发送数据
+    return send(fd, data, len, 0);
+}
+
+// 带超时控制的接收操作
+int KrpcChannel::recvWithTimeout(int fd, char *buf, size_t len, int timeout_ms)
+{
+    struct pollfd pfd;
+    pfd.fd = fd;
+    pfd.events = POLLIN;
+
+    // 等待socket可读
+    int ret = poll(&pfd, 1, timeout_ms);
+    if (ret <= 0)
+    {
+        return (ret == 0) ? -ETIMEDOUT : -1; // 超时或错误
+    }
+
+    // 接收数据
+    return recv(fd, buf, len, 0);
+}
 // #include "Communication.h"
-std::mutex g_data_mutx;  // 全局互斥锁，用于保护共享数据的线程安全
 
 // RPC调用的核心方法，负责将客户端的请求序列化并发送到服务端，同时接收服务端的响应
 void KrpcChannel::CallMethod(const ::google::protobuf::MethodDescriptor *method,
@@ -30,11 +86,12 @@ void KrpcChannel::CallMethod(const ::google::protobuf::MethodDescriptor *method,
         // 客户端需要查询ZooKeeper，找到提供该服务的服务器地址
         ZkClient zkCli;
         zkCli.Start();  // 连接ZooKeeper服务器
+        // this will use service config for location.
         std::string host_data = QueryServiceHost(&zkCli, service_name, method_name, m_idx);  // 查询服务地址
         m_ip = host_data.substr(0, m_idx);  // 从查询结果中提取IP地址
-        std::cout << "ip: " << m_ip << std::endl;
+        // std::cout << "ip: " << m_ip << std::endl;
         m_port = atoi(host_data.substr(m_idx + 1, host_data.size() - m_idx).c_str());  // 从查询结果中提取端口号
-        std::cout << "port: " << m_port << std::endl;
+        // std::cout << "port: " << m_port << std::endl;
 
         // 尝试连接服务器
         auto rt = newConnect(m_ip.c_str(), m_port);

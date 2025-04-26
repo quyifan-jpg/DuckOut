@@ -9,18 +9,18 @@
 
 void send_add_request(int thread_id,
                       std::atomic<int>& success_count,
-                      std::atomic<int>& fail_count) {
+                      std::atomic<int>& fail_count, int a, int b) {
   // 用于 RPC 调用的 Stub
   Kuser::UserServiceRpc_Stub stub(new KrpcChannel(false));
 
   // 构造 AddRequest
   Kuser::AddRequest request;
-  request.set_a(123);  // 你可以改成随机或不同值
-  request.set_b(456);
+  request.set_a(a);  // 你可以改成随机或不同值
+  request.set_b(b);
 
   // 准备响应和控制器
   Kuser::AddResponse response;
-  Krpccontroller controller;
+  KrpcController controller;
 
   // 发起 RPC 调用
   stub.Add(&controller, &request, &response, nullptr);
@@ -52,7 +52,7 @@ void send_request(int thread_id, std::atomic<int> &success_count, std::atomic<in
 
     // 定义 RPC 方法的响应参数
     Kuser::LoginResponse response;
-    Krpccontroller controller;  // 创建控制器对象，用于处理 RPC 调用过程中的错误
+    KrpcController controller;  // 创建控制器对象，用于处理 RPC 调用过程中的错误
 
     // 调用远程的 Login 方法
     stub.Login(&controller, &request, &response, nullptr);
@@ -76,8 +76,8 @@ int main(int argc, char** argv) {
   KrpcApplication::Init(argc, argv);
   KrpcLogger logger("AddBenchmark");
 
-  const int thread_count = 10;        // 并发线程数
-  const int requests_per_thread = 100; // 每线程请求数
+  const int thread_count = 1;        // 并发线程数
+  const int requests_per_thread = 10; // 每线程请求数
 
   std::vector<std::thread> threads;
   std::atomic<int> success_count(0), fail_count(0);
@@ -88,7 +88,7 @@ int main(int argc, char** argv) {
   for (int i = 0; i < thread_count; ++i) {
     threads.emplace_back([i, &success_count, &fail_count, requests_per_thread] {
       for (int j = 0; j < requests_per_thread; ++j) {
-        send_add_request(i, success_count, fail_count);
+        send_add_request(i, success_count, fail_count, j, i*100000);
       }
     });
   }

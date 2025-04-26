@@ -4,7 +4,10 @@
 // 目的是为了给客户端进行方法调用的时候，统一接收的
 #include <google/protobuf/service.h>
 #include "zookeeperutil.h"
-
+#include <sys/types.h>
+#include <string>
+#include <mutex>
+#include <atomic>
 class KrpcChannel : public google::protobuf::RpcChannel
 {
 public:
@@ -26,5 +29,13 @@ private:
     int m_idx; // 用来划分服务器ip和port的下标
     bool newConnect(const char *ip, uint16_t port);
     std::string QueryServiceHost(ZkClient *zkclient, std::string service_name, std::string method_name, int &idx);
+
+    // 超时控制相关的帮助函数
+    int sendWithTimeout(int fd, const char *data, size_t len, int timeout_ms);
+    int recvWithTimeout(int fd, char *buf, size_t len, int timeout_ms);
+    int setSocketNonBlocking(int fd);
+    static std::mutex s_load_balance_mutex;            // 保护轮询计数器的互斥锁
+    static std::atomic<int> s_next_server_index;       // 下一个服务器索引（全局计数器）
+    std::string SelectServerByRoundRobin(const std::vector<std::string>& server_list);  // 轮询选择服务器
 };
 #endif

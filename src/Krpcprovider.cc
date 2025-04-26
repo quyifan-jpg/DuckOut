@@ -48,7 +48,7 @@ void KrpcProvider::Run() {
     // 读取配置文件中的RPC服务器IP和端口
     std::string ip = KrpcApplication::GetInstance().GetConfig().Load("rpcserverip");
     int port = atoi(KrpcApplication::GetInstance().GetConfig().Load("rpcserverport").c_str());
-    // EpollServer server2; // 使用自定义的EpollServer
+
 
     // 使用muduo网络库，创建地址对象
     muduo::net::InetAddress address(ip, port);
@@ -65,7 +65,7 @@ void KrpcProvider::Run() {
     server->setMessageCallback(std::bind(&KrpcProvider::OnMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
     
     // 设置muduo库的线程数量
-    server->setThreadNum(8);
+    server->setThreadNum(10);
 
     // 将当前RPC节点上要发布的服务全部注册到ZooKeeper上，让RPC客户端可以在ZooKeeper上发现服务
     ZkClient zkclient;
@@ -94,7 +94,7 @@ void KrpcProvider::Run() {
 
 // 连接回调函数，处理客户端连接事件
 void KrpcProvider::OnConnection(const muduo::net::TcpConnectionPtr &conn) {
-    std::cout << "OnConnection" << std::endl;
+    std::cout << "OnConnection!" << std::endl;
     if (!conn->connected()) {
         // 如果连接关闭，则断开连接
         conn->shutdown();

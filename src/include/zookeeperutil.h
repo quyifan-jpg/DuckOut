@@ -1,24 +1,34 @@
-#ifndef _zookeeperutil_h_
-#define _zookeeperutil_h_
+#ifndef _ZOOKEEPER_UTIL_H_
+#define _ZOOKEEPER_UTIL_H_
 
-#include<semaphore.h>
-#include<zookeeper/zookeeper.h>
-#include<string>
+#include <zookeeper/zookeeper.h>
+#include <string>
+#include <vector>
 
-//封装的zk客户端
+// ZooKeeper客户端工具类，用于与ZooKeeper服务器交互
 class ZkClient
 {
 public:
     ZkClient();
     ~ZkClient();
-    //zkclient启动连接zkserver
+
+    // 启动ZooKeeper客户端
     void Start();
-    //在zkserver中创建一个节点，根据指定的path
-    void Create(const char* path,const char* data,int datalen,int state=0);
-    //根据参数指定的znode节点路径，或者znode节点值
-    std::string GetData(const char* path);
+
+    // 创建ZooKeeper节点
+    void Create(const char *path, const char *data, int datalen, int state = 0);
+
+    // 获取ZooKeeper节点的数据
+    std::string GetData(const char *path);
+
+    // 获取指定路径下的所有子节点
+    std::vector<std::string> GetChildren(const char *path);
+
+    // 获取指定路径下的所有子节点数据
+    std::vector<std::string> GetChildrenData(const char *path);
+
 private:
-    //Zk的客户端句柄
-    zhandle_t* m_zhandle;
+    zhandle_t *m_zhandle; // ZooKeeper客户端句柄
 };
+
 #endif
